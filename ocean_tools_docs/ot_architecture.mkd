@@ -1,0 +1,24 @@
+ocean_tools/
+├── __init__.py
+├── config/
+│   ├── __init__.py
+│   └── defaults.py
+├── data_handling/
+│   ├── __init__.py
+│   ├── download.py
+│   └── availability.py
+├── io/
+│   ├── __init__.py
+│   ├── readers.py
+│   └── writers.py
+├── processing/
+│   ├── __init__.py
+│   ├── anomalies.py
+│   ├── data_prep.py
+│   ├── merges.py
+│   ├── pca.py
+│   └── regression.py
+└──── visualization/
+    ├── __init__.py
+    ├── maps.py
+    └── reports.py
