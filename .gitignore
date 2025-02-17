@@ -1,6 +1,4 @@
+data
 archive/*
 entregas_viu/*
 notebook_exports/*
-data/oceancolor/*
-data/exports/*
-data/*.nc
