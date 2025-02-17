@@ -14,6 +14,7 @@
 
 ## 📂 Estructura del Proyecto
 
+``` 
 ocean_tools/
 ├── config/                 # Parámetros predefinidos (regiones, variables, etc.)
 ├── data_handling/          # Descarga y disponibilidad de datos
@@ -21,31 +22,42 @@ ocean_tools/
 ├── processing/             # Procesamiento, anomalías, PCA, regresión, clustering
 ├── visualization/          # Mapas, reportes y gráficos
 └── main.py                 # Ejemplo de uso principal
+```
 
 ## 🚀 Instalación
 
 Para instalar `ocean_tools` y sus dependencias, sigue estos pasos:
 
-git clone https://github.com/alu0101131108/TFM_IA_SATELLITE_OCEAN_TOOLS.git
-cd ocean_tools
-poetry install
+``` powershell
+> git clone https://github.com/alu0101131108/TFM_IA_SATELLITE_OCEAN_TOOLS.git
+> cd ocean_tools
+> poetry install
+```
 
 ## 🛠 Uso Básico
 
 Ejemplo de carga y análisis de datos satelitales:
 
+``` python
 from ocean_tools.io.readers import get_xarray_from_file
 from ocean_tools.processing.data_prep import prepare_dataset_for_analysis
 from ocean_tools.visualization.maps import plot_spatial_variable
+```
 
 # Cargar dataset de temperatura superficial del mar (SST)
+``` python
 ds = get_xarray_from_file("data/exports/AQUA_MODIS_MONTHLY.nc")
+```
 
 # Preprocesar y calcular anomalías
+``` python
 ds_anom = prepare_dataset_for_analysis(ds, "sst", use_anomalies=True)
+```
 
 # Visualizar media de anomalías
+``` python
 plot_spatial_variable(ds_anom["sst"].mean(dim="time"), ds_anom.lat, ds_anom.lon, cmap="RdBu_r")
+```
 
 ## 📊 Casos de Uso
 
