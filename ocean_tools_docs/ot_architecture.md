@@ -1,3 +1,4 @@
+```
 ocean_tools/
 ├── __init__.py
 ├── config/
@@ -17,8 +18,13 @@ ocean_tools/
 │   ├── data_prep.py
 │   ├── merges.py
 │   ├── pca.py
+│   ├── clustering.py
+│   ├── differences.py
 │   └── regression.py
 └──── visualization/
     ├── __init__.py
     ├── maps.py
-    └── reports.py
+    ├── reports.py
+    ├── difference_plots.py
+    └── feature_plots.py
+```
