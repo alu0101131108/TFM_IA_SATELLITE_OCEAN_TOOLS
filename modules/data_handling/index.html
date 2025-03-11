@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Manejo de Datos - Ocean Tools Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Ocean Tools Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Módulos</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../config/" class="dropdown-item">Configuración</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Manejo de Datos</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">Entrada/Salida</a>
+</li>
+                                    
+<li>
+    <a href="../processing/" class="dropdown-item">Procesamiento</a>
+</li>
+                                    
+<li>
+    <a href="../visualization/" class="dropdown-item">Visualización</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../config/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../io/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#manejo-de-datos" class="nav-link">Manejo de Datos</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#descarga-downloadpy" class="nav-link">Descarga (download.py)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ocean_tools.data_handling.download" class="nav-link">download</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#disponibilidad-de-datos" class="nav-link">Disponibilidad de Datos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ocean_tools.data_handling.availability" class="nav-link">availability</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="manejo-de-datos">Manejo de Datos</h1>
+<h2 id="descarga-downloadpy">Descarga (<code>download.py</code>)</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="ocean_tools.data_handling.download" class="doc doc-heading">
+            <code>download</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.data_handling.download.bulk_download_files" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">bulk_download_files</span><span class="p">(</span><span class="n">file_urls</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="n">max_files</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">file_timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Downloads multiple files from a list of URLs provided as a string and saves them to the specified destination.</p>
+<p>The function reads a newline-separated list of URLs, filters out files that already exist in the destination,
+and downloads each file using the browser (or directly if it is a PNG). It tracks and prints progress.</p>
+<h5 id="ocean_tools.data_handling.download.bulk_download_files--parameters">Parameters</h5>
+<p>file_urls : str
+    A string containing URLs (one per line) of the files to download.
+destination_path : str
+    The directory where the downloaded files will be stored.
+max_files : int, optional
+    The maximum number of files to download. If 0, all pending files are downloaded. Default is 0.
+file_timeout : int, optional
+    Maximum time (in seconds) to wait for each file to appear in the Downloads folder. Default is 60.
+verbose : bool, optional
+    If True, prints progress and status messages. Default is False.</p>
+<h5 id="ocean_tools.data_handling.download.bulk_download_files--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.data_handling.download.download_file_using_browser_and_move" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">download_file_using_browser_and_move</span><span class="p">(</span><span class="n">in_url</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Downloads a file by opening its URL in the default browser (or downloads directly if the file is a PNG)
+and moves it to the specified destination path.</p>
+<p>For PNG files, the image is downloaded directly. For other file types, the URL is opened in the browser
+and the function waits for the file to appear in the Downloads folder before moving it.</p>
+<h5 id="ocean_tools.data_handling.download.download_file_using_browser_and_move--parameters">Parameters</h5>
+<p>in_url : str
+    The URL of the file to download.
+destination_path : str
+    The destination directory where the file should be moved.
+timeout : int, optional
+    Maximum time (in seconds) to wait for the file to appear in the Downloads folder. Default is 60.
+verbose : bool, optional
+    If True, prints status messages. Default is False.</p>
+<h5 id="ocean_tools.data_handling.download.download_file_using_browser_and_move--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.data_handling.download.download_image_from_url" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">download_image_from_url</span><span class="p">(</span><span class="n">image_url</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Downloads an image file (PNG) from a given URL and saves it to the specified destination.</p>
+<h5 id="ocean_tools.data_handling.download.download_image_from_url--parameters">Parameters</h5>
+<p>image_url : str
+    The URL of the image to download.
+destination_path : str
+    The file path where the downloaded image will be saved.
+verbose : bool, optional
+    If True, prints a success message upon completion. Default is False.</p>
+<h5 id="ocean_tools.data_handling.download.download_image_from_url--raises">Raises</h5>
+<p>requests.exceptions.RequestException
+    If the HTTP request for downloading fails.</p>
+<h5 id="ocean_tools.data_handling.download.download_image_from_url--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.data_handling.download.wait_for_and_move_file" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">wait_for_and_move_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Waits for a specified file to appear in the user's Downloads folder and then moves it to a destination.</p>
+<p>This function continuously checks the Downloads directory for the presence of the specified file.
+Once the file is found (or the timeout is exceeded), it is moved to the destination path.</p>
+<h5 id="ocean_tools.data_handling.download.wait_for_and_move_file--parameters">Parameters</h5>
+<p>file_name : str
+    The name of the file to wait for.
+destination_path : str
+    The full path (including file name) where the file should be moved.
+timeout : int, optional
+    Maximum time (in seconds) to wait for the file. Default is 60.
+verbose : bool, optional
+    If True, prints status messages during the waiting process. Default is False.</p>
+<h5 id="ocean_tools.data_handling.download.wait_for_and_move_file--raises">Raises</h5>
+<p>FileNotFoundError
+    If the file is not found in the Downloads folder within the specified timeout.</p>
+<h5 id="ocean_tools.data_handling.download.wait_for_and_move_file--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h2 id="disponibilidad-de-datos">Disponibilidad de Datos</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="ocean_tools.data_handling.availability" class="doc doc-heading">
+            <code>availability</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.data_handling.availability.data_availability_analysis" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">data_availability_analysis</span><span class="p">(</span><span class="n">urls_directory</span><span class="p">,</span> <span class="n">monthly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Analyzes file availability from a text file containing URLs.</p>
+<p>This function reads a text file of URLs, extracts dates from the file names,
+groups the dates by month, and calculates the number of available files versus the
+ideal number (based on the number of days in each month, unless monthly is True).
+Optionally, it plots the number of available and missing files per month.</p>
+<h5 id="ocean_tools.data_handling.availability.data_availability_analysis--parameters">Parameters</h5>
+<p>urls_filepath : str
+    Path to the text file containing URLs (one URL per line). The file names are expected
+    to contain a date in the format YYYYMMDD after a dot.
+monthly : bool, optional
+    If True, assumes each month should have one file (instead of the total number of days in the month).
+    Default is False.
+plot : bool, optional
+    If True, displays a bar chart of file availability. Default is True.</p>
+<h5 id="ocean_tools.data_handling.availability.data_availability_analysis--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

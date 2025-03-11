@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Visualización - Ocean Tools Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Ocean Tools Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Módulos</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../config/" class="dropdown-item">Configuración</a>
+</li>
+                                    
+<li>
+    <a href="../data_handling/" class="dropdown-item">Manejo de Datos</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">Entrada/Salida</a>
+</li>
+                                    
+<li>
+    <a href="../processing/" class="dropdown-item">Procesamiento</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Visualización</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../processing/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#visualizacion" class="nav-link">Visualización</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#mapas-espaciales" class="nav-link">Mapas espaciales</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ocean_tools.visualization.maps" class="nav-link">maps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#graficas-de-diferencias" class="nav-link">Gráficas de diferencias</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ocean_tools.visualization.difference_plots" class="nav-link">difference_plots</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#graficas-y-reportes-de-featuresclusters" class="nav-link">Gráficas y reportes de features/clusters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ocean_tools.visualization.feature_plots" class="nav-link">feature_plots</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ocean_tools.visualization.reports" class="nav-link">reports</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="visualizacion">Visualización</h1>
+<h2 id="mapas-espaciales">Mapas espaciales</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="ocean_tools.visualization.maps" class="doc doc-heading">
+            <code>maps</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.maps.plot_n_spatial_variable" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_n_spatial_variable</span><span class="p">(</span><span class="n">target_list</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span><span class="p">,</span> <span class="n">i_width</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">i_height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">titles</span><span class="o">=</span><span class="p">[],</span> <span class="n">plot_label</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">norm_mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plots multiple 2D spatial variables in a grid of subplots.</p>
+<p>If the colormap 'labels' is specified, the function creates a ListedColormap with distinct colors.
+Each subplot is plotted using Cartopy with coastlines and gridlines. If titles are provided,
+each subplot is given a title.</p>
+<h5 id="ocean_tools.visualization.maps.plot_n_spatial_variable--parameters">Parameters</h5>
+<p>target_list : list
+    List of 2D arrays (lat, lon) to plot.
+lat : list or array-like
+    1D array of latitude values.
+lon : list or array-like
+    1D array of longitude values.
+nrows : int
+    Number of rows in the subplot grid.
+ncols : int
+    Number of columns in the subplot grid.
+i_width : int, optional
+    Width of each subplot in inches (default is 8).
+i_height : int, optional
+    Height of each subplot in inches (default is 8).
+clim : list, optional
+    Color limits as [min, max] (default is [0, 40]).
+titles : list, optional
+    List of titles for each subplot (default is an empty list).
+plot_label : str, optional
+    Label for the colorbar (default is 'Variable').
+cmap : str, optional
+    Colormap to use. If 'labels', a discrete colormap is generated (default is 'RdBu_r').
+norm_mode : str, optional
+    Normalization mode for color scaling. Options are:
+      - 'none': no normalization,
+      - 'log': logarithmic normalization,
+      - 'symlog': symmetric logarithmic normalization.
+      (Default is 'none'.)</p>
+<h5 id="ocean_tools.visualization.maps.plot_n_spatial_variable--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.maps.plot_spatial_variable" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_spatial_variable</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">i_width</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">i_height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">plot_label</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">norm_mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plots a single 2D spatial variable on a map using Cartopy.</p>
+<p>The function displays the data as a pcolormesh plot with coastlines and gridlines,
+applying a specified colormap and normalization.</p>
+<h5 id="ocean_tools.visualization.maps.plot_spatial_variable--parameters">Parameters</h5>
+<p>target : array-like
+    2D array (lat, lon) of the variable to plot.
+lat : array-like
+    1D array of latitude values.
+lon : array-like
+    1D array of longitude values.
+i_width : int, optional
+    Figure width in inches (default is 8).
+i_height : int, optional
+    Figure height in inches (default is 8).
+clim : list, optional
+    Color limits as [min, max] (default is [0, 40]).
+title : str, optional
+    Title of the plot (default is an empty string).
+plot_label : str, optional
+    Label for the colorbar (default is 'Variable').
+cmap : str, optional
+    Colormap to use (default is 'RdBu_r').
+norm_mode : str, optional
+    Normalization mode for color scaling. Options are:
+      - 'none': no normalization,
+      - 'log': logarithmic normalization,
+      - 'symlog': symmetric logarithmic normalization.
+      (Default is 'none'.)</p>
+<h5 id="ocean_tools.visualization.maps.plot_spatial_variable--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="graficas-de-diferencias">Gráficas de diferencias</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="ocean_tools.visualization.difference_plots" class="doc doc-heading">
+            <code>difference_plots</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.difference_plots.plot_latitudinal_average_diffences" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_latitudinal_average_diffences</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smooth_factor</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">i_width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">i_height</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_title</span><span class="o">=</span><span class="s1">&#39;Latitudinal Average Differences&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plots latitudinal average differences as line charts.</p>
+<p>For each set of difference values (assumed to be 1D arrays), this function optionally applies
+a moving average smoothing (if smooth_factor &gt;= 1) and plots the resulting line with the corresponding label.
+A vertical line at x=0 is drawn for reference.</p>
+<h5 id="ocean_tools.visualization.difference_plots.plot_latitudinal_average_diffences--parameters">Parameters</h5>
+<p>diffs : list
+    List of 1D arrays representing average differences (e.g., differences averaged over longitude).
+labels : list
+    List of labels for each profile (e.g., season names).
+lat : np.ndarray, optional
+    1D array of latitude values. Required if diffs do not include coordinate information.
+smooth_factor : float, optional
+    Smoothing factor in the same units as latitude. If &gt;= 1, moving average smoothing is applied.
+    Default is 0 (no smoothing).
+i_width : int, optional
+    Width of the figure in inches (default is 5).
+i_height : int, optional
+    Height of the figure in inches (default is 5).
+plot_label : str, optional
+    Label for the x-axis. If provided, used as the x-axis label.
+plot_title : str, optional
+    Title of the plot (default is "Latitudinal Average Differences").</p>
+<h5 id="ocean_tools.visualization.difference_plots.plot_latitudinal_average_diffences--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.difference_plots.plot_longitudinal_average_diffences" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_longitudinal_average_diffences</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smooth_factor</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">i_width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">i_height</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_title</span><span class="o">=</span><span class="s1">&#39;Latitudinal Average Differences&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plots longitudinal average differences as line charts.</p>
+<p>For each set of difference values (assumed to be 1D arrays), this function optionally applies
+a moving average smoothing (if smooth_factor &gt;= 1) and plots the resulting line with the corresponding label.
+A horizontal line at y=0 is drawn for reference.</p>
+<h5 id="ocean_tools.visualization.difference_plots.plot_longitudinal_average_diffences--parameters">Parameters</h5>
+<p>diffs : list
+    List of 1D arrays representing average differences (e.g., differences averaged over latitude).
+labels : list
+    List of labels for each profile (e.g., season names or month numbers).
+lon : np.ndarray, optional
+    1D array of longitude values. Required if diffs do not include coordinate information.
+smooth_factor : float, optional
+    Smoothing factor in the same units as longitude. If &gt;= 1, moving average smoothing is applied.
+    Default is 0 (no smoothing).
+i_width : int, optional
+    Width of the figure in inches (default is 5).
+i_height : int, optional
+    Height of the figure in inches (default is 5).
+plot_label : str, optional
+    Label for the y-axis. If provided, used as the y-axis label.
+plot_title : str, optional
+    Title of the plot (default is "Longitudinal Average Differences").</p>
+<h5 id="ocean_tools.visualization.difference_plots.plot_longitudinal_average_diffences--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.difference_plots.plot_total_average_differences" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_total_average_differences</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">i_width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">i_height</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot_title</span><span class="o">=</span><span class="s1">&#39;Average Differences&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plots overall average differences as a horizontal bar chart.</p>
+<h5 id="ocean_tools.visualization.difference_plots.plot_total_average_differences--parameters">Parameters</h5>
+<p>diffs : list or array-like
+    A list or array of scalar difference values.
+labels : list or array-like
+    A list of labels corresponding to each difference (e.g., season names or month numbers).
+i_width : int, optional
+    Width of the figure in inches (default is 10).
+i_height : int, optional
+    Height of the figure in inches (default is 5).
+plot_title : str, optional
+    Title of the plot (default is "Average Differences").</p>
+<h5 id="ocean_tools.visualization.difference_plots.plot_total_average_differences--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="graficas-y-reportes-de-featuresclusters">Gráficas y reportes de features/clusters</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="ocean_tools.visualization.feature_plots" class="doc doc-heading">
+            <code>feature_plots</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.feature_plots.plot_feature_histograms" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_feature_histograms</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span> <span class="n">i_width</span><span class="p">,</span> <span class="n">i_height</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plots a grid of stacked histograms for each feature contained in a DataFrame.</p>
+<p>Each row in the DataFrame represents a cluster and each column represents a computed feature.
+The function creates subplots for each feature, plotting a horizontal stacked histogram that uses
+a uniform binning based on the feature's min and max values. A legend maps each cluster (by its index)
+to a distinct color.</p>
+<h5 id="ocean_tools.visualization.feature_plots.plot_feature_histograms--parameters">Parameters</h5>
+<p>df : pandas.DataFrame
+    DataFrame where rows are clusters and columns are features.
+n_rows : int
+    Number of rows in the subplot grid.
+n_cols : int
+    Number of columns in the subplot grid.
+i_width : int
+    Figure width in inches.
+i_height : int
+    Figure height in inches.
+title : str
+    Overall title for the figure.</p>
+<h5 id="ocean_tools.visualization.feature_plots.plot_feature_histograms--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.feature_plots.plot_feature_scatter_grid" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_feature_scatter_grid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">i_width</span><span class="p">,</span> <span class="n">i_height</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plots a scatterplot matrix comparing each feature with every other feature from a DataFrame.</p>
+<p>Each off-diagonal subplot shows a scatter plot comparing two features (x-axis and y-axis), with each 
+point representing a cluster (based on the DataFrame index) and colored using a distinct color. The diagonal 
+subplots display the feature name. Additionally, the leftmost column subplots have y-axis ticks (showing the 
+min and max of the feature) and the bottom row subplots have x-axis ticks similarly.</p>
+<h5 id="ocean_tools.visualization.feature_plots.plot_feature_scatter_grid--parameters">Parameters</h5>
+<p>df : pandas.DataFrame
+    DataFrame with clusters as rows and features as columns.
+i_width : int
+    Overall figure width in inches.
+i_height : int
+    Overall figure height in inches.
+title : str
+    Overall title for the figure.</p>
+<h5 id="ocean_tools.visualization.feature_plots.plot_feature_scatter_grid--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="ocean_tools.visualization.reports" class="doc doc-heading">
+            <code>reports</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.reports.plot_n_clustering_experiment_feature_report" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_n_clustering_experiment_feature_report</span><span class="p">(</span><span class="n">features</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+<details class="generates-a-clustering-experiment-feature-report-that-includes" open>
+  <summary>Generates a clustering experiment feature report that includes</summary>
+  <ul>
+<li>A printed table of cluster features.</li>
+<li>A grid of histograms for each cluster feature.</li>
+<li>A scatterplot matrix of cluster features.</li>
+</ul>
+</details>        <p>The function prints the feature table and then calls helper functions to plot the histograms 
+and scatterplot matrix using the cluster features stored in a dictionary.</p>
+<h5 id="ocean_tools.visualization.reports.plot_n_clustering_experiment_feature_report--parameters">Parameters</h5>
+<p>features : dict
+    Dictionary containing cluster features, where keys are cluster IDs (as int) and values are dictionaries
+    mapping feature names to computed feature values.</p>
+<h5 id="ocean_tools.visualization.reports.plot_n_clustering_experiment_feature_report--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ocean_tools.visualization.reports.plot_n_eof_report" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_n_eof_report</span><span class="p">(</span><span class="n">patterns</span><span class="p">,</span> <span class="n">time_series</span><span class="p">,</span> <span class="n">max_mins</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">time_dim</span><span class="p">,</span> <span class="n">clim_pattern</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">clim_maxmin</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">pat_norm_mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">maxmin_norm_mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">timeseries_type</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generates a comprehensive EOF report displaying spatial and temporal information for each EOF.</p>
+<p>For each EOF (Empirical Orthogonal Function), the report includes:
+  - The spatial pattern (EOF) plotted on a map.
+  - The corresponding time series (PC) plotted either as a line chart or as vertical bars (enhanced_bars).
+  - The spatial fields corresponding to the maximum and minimum values of the PC,
+    with the associated date (month) indicated in the title.</p>
+<h5 id="ocean_tools.visualization.reports.plot_n_eof_report--parameters">Parameters</h5>
+<p>patterns : list of 2D arrays
+    List of spatial patterns (EOFs), each with shape (lat, lon).
+time_series : list of 1D arrays
+    List of time series (PCs) corresponding to each EOF.
+max_mins : list of lists
+    List of pairs [max_pattern, min_pattern] for each EOF, where each pattern is a 2D array (lat, lon).
+lat : array-like
+    1D array of latitude values.
+lon : array-like
+    1D array of longitude values.
+time_dim : array-like
+    1D array of time values corresponding to the time series.
+clim_pattern : list, optional
+    Color limits for the EOF spatial patterns (default is [-0.01, 0.01]).
+clim_maxmin : list, optional
+    Color limits for the max/min spatial fields (default is [-5, 5]).
+cmap : str, optional
+    Colormap to use for all plots (default is 'RdBu_r').
+pat_norm_mode : str, optional
+    Normalization mode for EOF patterns; options are 'none', 'log', or 'symlog' (default is 'none').
+maxmin_norm_mode : str, optional
+    Normalization mode for max/min fields; options are 'none', 'log', or 'symlog' (default is 'none').
+timeseries_type : str, optional
+    Type of time series plot: 'line' for a simple line plot or 'enhanced_bars' for a vertical bar chart with color-coded bars.
+    Default is 'line'.</p>
+<h5 id="ocean_tools.visualization.reports.plot_n_eof_report--returns">Returns</h5>
+<p>None</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
