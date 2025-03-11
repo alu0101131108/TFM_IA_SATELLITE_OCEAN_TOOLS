@@ -1,0 +1,20 @@
+site_name: Ocean Tools Documentation
+nav:
+  - Inicio: index.md
+  - Módulos:
+      - Configuración: modules/config.md
+      - Manejo de Datos: modules/data_handling.md
+      - Entrada/Salida: modules/io.md
+      - Procesamiento: modules/processing.md
+      - Visualización: modules/visualization.md
+
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [../]  # Añade la raíz del proyecto al PYTHONPATH
+          options:
+            show_source: false          # Do not show full source code
+            show_root_heading: true     # Keep module headings visible
+            show_root_full_path: false  # Simplify headings
+

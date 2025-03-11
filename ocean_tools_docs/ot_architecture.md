@@ -1,3 +1,24 @@
+__Overall Repo Structure__
+```
+ocean_tools/
+├── data/
+│   └── (...) 
+├── src/
+│   ├── config/ (...)
+│   ├── data_handling/ (...)
+│   ├── io/ (...)
+│   ├── processing/ (...)
+│   │   ├── (...)
+│   │   ├── anomalies.py
+│   │   ├── pca.py
+│   │   └── clustering.py
+│   └── visualization/ (...)
+├── sample_notebook.ipynb
+├── sample_script.py
+└── (...)
+```
+
+__Source Code Structure__
 ```
 ocean_tools/
 ├── __init__.py
