@@ -6,8 +6,27 @@ import matplotlib.pyplot as plt
 
 def data_availability_analysis(urls_directory: str, monthly: bool = False, plot: bool = True) -> None:
     """
-    Lee un archivo de texto con URLs, agrupa sus fechas y analiza la disponibilidad
-    (diaria o mensual). Opcionalmente grafica el recuento de archivos por mes.
+    Analyzes file availability from a text file containing URLs.
+
+    This function reads a text file of URLs, extracts dates from the file names,
+    groups the dates by month, and calculates the number of available files versus the
+    ideal number (based on the number of days in each month, unless monthly is True).
+    Optionally, it plots the number of available and missing files per month.
+
+    Parameters
+    ----------
+    urls_filepath : str
+        Path to the text file containing URLs (one URL per line). The file names are expected
+        to contain a date in the format YYYYMMDD after a dot.
+    monthly : bool, optional
+        If True, assumes each month should have one file (instead of the total number of days in the month).
+        Default is False.
+    plot : bool, optional
+        If True, displays a bar chart of file availability. Default is True.
+
+    Returns
+    -------
+    None
     """
     with open(urls_directory, "r") as file:
         file_urls = file.read()

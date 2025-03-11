@@ -5,8 +5,25 @@ from sklearn import linear_model
 
 def raster_series_regression_2d_slopes(ds, variable_name, step_name="Step"):
     """
-    Realiza una regresión lineal en cada punto (lat, lon) de un Dataset,
-    calculando la pendiente de la serie temporal de 'variable_name'.
+    Computes linear regression slopes at each (lat, lon) grid point from the time series of the specified variable.
+
+    For each spatial point in the dataset, the function fits a linear regression model using the time coordinate
+    (converted to an integer type) as the independent variable and the variable values as the dependent variable.
+    It returns a 2D numpy array of slopes with the same spatial dimensions as the dataset.
+
+    Parameters
+    ----------
+    ds : xr.Dataset
+        Input dataset that contains the variable as well as 'time', 'lat', and 'lon' coordinates.
+    variable_name : str
+        The name of the variable on which to perform the regression (e.g., 'sst').
+    step_name : str, optional
+        A label used to display progress during computation. Default is "Step".
+
+    Returns
+    -------
+    np.ndarray
+        2D numpy array of slopes with shape (len(lat), len(lon)).
     """
     time_dim = ds.variables['time'].astype('int64')
     lat = ds.variables['lat']
@@ -40,30 +57,41 @@ def raster_series_regression_2d_slopes(ds, variable_name, step_name="Step"):
 from ..io.writers import save_ndarray_as_netcdf_to_file
 def get_regression_slopes(ds, variable_name, mode='full', step_name="Step", store=False, store_dir="", file_name=""):
     """
-    Calcula las pendientes de regresión para un dataset basado en el modo especificado.
-    
-    Parámetros:
-    ----------
-    ds : xarray.Dataset
-        El dataset de entrada que contiene los datos.
-    variable_name : str
-        El nombre de la variable para la que se calculan las pendientes.
-    mode : str
-        El modo de cálculo: 'full', 'seasonal' o 'monthly'.
-    step_name : str
-        El nombre del paso para mostrar el progreso.
-    store : bool
-        Si True, guarda los resultados en un archivo NetCDF.
-    store_dir : str
-        La ruta donde se almacenará el archivo NetCDF.
-    file_name : str
-        El nombre del archivo NetCDF.
+    Calculates regression slopes for a dataset based on the specified temporal mode.
 
-    Retorno:
+    Depending on the mode, this function computes:
+      - 'full': A single 2D spatial array of slopes computed over the entire time series.
+      - 'seasonal': A dictionary with keys ('winter', 'spring', 'summer', 'autumn'), each containing a 2D
+                    spatial array of slopes computed over the corresponding season.
+      - 'monthly': A dictionary with keys 1 to 12, each containing a 2D spatial array of slopes computed
+                   for the corresponding month.
+
+    Optionally, the computed slopes are saved to NetCDF files.
+
+    Parameters
+    ----------
+    ds : xr.Dataset
+        Input dataset containing the variable and coordinates (time, lat, lon).
+    variable_name : str
+        The name of the variable to process (e.g., 'sst').
+    mode : str, optional
+        Temporal mode of computation: 'full', 'seasonal', or 'monthly'. Default is 'full'.
+    step_name : str, optional
+        Label used for progress display. Default is "Step".
+    store : bool, optional
+        If True, the computed slopes are saved as NetCDF files. Default is False.
+    store_dir : str, optional
+        Directory where the NetCDF files will be stored if store is True.
+    file_name : str, optional
+        Base file name for the stored NetCDF files if store is True.
+
+    Returns
     -------
-    Si mode == 'full': xarray.DataArray con las pendientes globales de la variable.
-    Si mode == 'seasonal': dict con 4 xarray.DataArray (invierno, primavera, verano, otoño).
-    Si mode == 'monthly': dict con 12 xarray.DataArray, uno para cada mes.
+    xr.DataArray or dict
+        If mode is 'full', returns an xarray.DataArray with slopes.
+        If mode is 'seasonal' or 'monthly', returns a dictionary mapping season/month to xarray.DataArray of slopes.
+    dict
+        A dictionary of additional information (e.g., number of clusters may be added in future versions).
     """
     if mode == 'full':
         # Pendientes totales a través de la dimensión temporal

@@ -9,8 +9,30 @@ from pathlib import Path
 
 def wait_for_and_move_file(file_name: str, destination_path: str, timeout: int = 60, verbose: bool = False) -> None:
     """
-    Espera a que aparezca un archivo en la carpeta de descargas 
-    y lo mueve a la ruta especificada.
+    Waits for a specified file to appear in the user's Downloads folder and then moves it to a destination.
+
+    This function continuously checks the Downloads directory for the presence of the specified file.
+    Once the file is found (or the timeout is exceeded), it is moved to the destination path.
+
+    Parameters
+    ----------
+    file_name : str
+        The name of the file to wait for.
+    destination_path : str
+        The full path (including file name) where the file should be moved.
+    timeout : int, optional
+        Maximum time (in seconds) to wait for the file. Default is 60.
+    verbose : bool, optional
+        If True, prints status messages during the waiting process. Default is False.
+
+    Raises
+    ------
+    FileNotFoundError
+        If the file is not found in the Downloads folder within the specified timeout.
+
+    Returns
+    -------
+    None
     """
     downloads_dir = str(Path.home() / "Downloads")
     file_path = os.path.join(downloads_dir, file_name)
@@ -36,7 +58,25 @@ def wait_for_and_move_file(file_name: str, destination_path: str, timeout: int =
 
 def download_image_from_url(image_url: str, destination_path: str, verbose: bool = False) -> None:
     """
-    Descarga un archivo de imagen (PNG) desde una URL y lo guarda en la ruta indicada.
+    Downloads an image file (PNG) from a given URL and saves it to the specified destination.
+
+    Parameters
+    ----------
+    image_url : str
+        The URL of the image to download.
+    destination_path : str
+        The file path where the downloaded image will be saved.
+    verbose : bool, optional
+        If True, prints a success message upon completion. Default is False.
+
+    Raises
+    ------
+    requests.exceptions.RequestException
+        If the HTTP request for downloading fails.
+
+    Returns
+    -------
+    None
     """
     try:
         response = requests.get(image_url, stream=True)
@@ -54,9 +94,26 @@ def download_image_from_url(image_url: str, destination_path: str, verbose: bool
 
 def download_file_using_browser_and_move(in_url: str, destination_path: str, timeout: int = 60, verbose: bool = False) -> None:
     """
-    Abre una URL en el navegador por defecto para descargar el archivo 
-    y luego lo mueve a la carpeta de destino. 
-    Si el archivo es .png, se descarga directamente.
+    Downloads a file by opening its URL in the default browser (or downloads directly if the file is a PNG)
+    and moves it to the specified destination path.
+
+    For PNG files, the image is downloaded directly. For other file types, the URL is opened in the browser
+    and the function waits for the file to appear in the Downloads folder before moving it.
+
+    Parameters
+    ----------
+    in_url : str
+        The URL of the file to download.
+    destination_path : str
+        The destination directory where the file should be moved.
+    timeout : int, optional
+        Maximum time (in seconds) to wait for the file to appear in the Downloads folder. Default is 60.
+    verbose : bool, optional
+        If True, prints status messages. Default is False.
+
+    Returns
+    -------
+    None
     """
     file_name = in_url.split("/")[-1]
     output_path = os.path.join(destination_path, file_name)
@@ -72,8 +129,27 @@ def download_file_using_browser_and_move(in_url: str, destination_path: str, tim
 
 def bulk_download_files(file_urls: str, destination_path: str, max_files: int = 0, file_timeout: int = 60, verbose: bool = False) -> None:
     """
-    Descarga múltiples archivos abriendo sus URLs en el navegador (o directamente si .png)
-    y los mueve a la carpeta de destino.
+    Downloads multiple files from a list of URLs provided as a string and saves them to the specified destination.
+
+    The function reads a newline-separated list of URLs, filters out files that already exist in the destination,
+    and downloads each file using the browser (or directly if it is a PNG). It tracks and prints progress.
+
+    Parameters
+    ----------
+    file_urls : str
+        A string containing URLs (one per line) of the files to download.
+    destination_path : str
+        The directory where the downloaded files will be stored.
+    max_files : int, optional
+        The maximum number of files to download. If 0, all pending files are downloaded. Default is 0.
+    file_timeout : int, optional
+        Maximum time (in seconds) to wait for each file to appear in the Downloads folder. Default is 60.
+    verbose : bool, optional
+        If True, prints progress and status messages. Default is False.
+
+    Returns
+    -------
+    None
     """
     url_list = list(filter(None, map(str.strip, file_urls.split("\n"))))
     n_total_files = len(url_list)

@@ -1,4 +1,4 @@
-# ocean_tools/visualization/difference_plots.py
+# ocean_tools/visualization/feature_plots.py
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,22 +7,31 @@ import matplotlib.patches as mpatches
 
 def plot_feature_histograms(df, n_rows, n_cols, i_width, i_height, title):
     """
-    Plots a grid of stacked histograms (one per feature) from a DataFrame.
-    
-    Parameters:
-    -----------
+    Plots a grid of stacked histograms for each feature contained in a DataFrame.
+
+    Each row in the DataFrame represents a cluster and each column represents a computed feature.
+    The function creates subplots for each feature, plotting a horizontal stacked histogram that uses
+    a uniform binning based on the feature's min and max values. A legend maps each cluster (by its index)
+    to a distinct color.
+
+    Parameters
+    ----------
     df : pandas.DataFrame
-        DataFrame where rows correspond to clusters and columns correspond to features.
+        DataFrame where rows are clusters and columns are features.
     n_rows : int
-        Number of rows in the grid of subplots.
+        Number of rows in the subplot grid.
     n_cols : int
-        Number of columns in the grid of subplots.
-    i_width : int or float
-        Figure width (in inches).
-    i_height : int or float
-        Figure height (in inches).
+        Number of columns in the subplot grid.
+    i_width : int
+        Figure width in inches.
+    i_height : int
+        Figure height in inches.
     title : str
         Overall title for the figure.
+
+    Returns
+    -------
+    None
     """
     # Determine the number of clusters from the DataFrame index.
     n_clusters = len(df.index)
@@ -85,23 +94,27 @@ def plot_feature_histograms(df, n_rows, n_cols, i_width, i_height, title):
 
 def plot_feature_scatter_grid(df, i_width, i_height, title):
     """
-    Plots a scatterplot matrix (grid) comparing each feature with every other feature.
-    Each point represents a cluster (with one row per cluster in df) and is colored according
-    to its cluster id. The diagonal shows the feature name.
-    
-    The left-most column shows y-axis tick marks (min and max values) for each row's feature,
-    and the bottom row shows x-axis tick marks (min and max values) for each column's feature.
-    
-    Parameters:
-    -----------
+    Plots a scatterplot matrix comparing each feature with every other feature from a DataFrame.
+
+    Each off-diagonal subplot shows a scatter plot comparing two features (x-axis and y-axis), with each 
+    point representing a cluster (based on the DataFrame index) and colored using a distinct color. The diagonal 
+    subplots display the feature name. Additionally, the leftmost column subplots have y-axis ticks (showing the 
+    min and max of the feature) and the bottom row subplots have x-axis ticks similarly.
+
+    Parameters
+    ----------
     df : pandas.DataFrame
         DataFrame with clusters as rows and features as columns.
-    i_width : int or float
-        The overall figure width in inches.
-    i_height : int or float
-        The overall figure height in inches.
+    i_width : int
+        Overall figure width in inches.
+    i_height : int
+        Overall figure height in inches.
     title : str
-        The overall title of the figure.
+        Overall title for the figure.
+
+    Returns
+    -------
+    None
     """
     features = df.columns
     n_features = len(features)

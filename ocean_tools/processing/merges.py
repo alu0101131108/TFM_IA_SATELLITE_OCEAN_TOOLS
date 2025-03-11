@@ -5,8 +5,30 @@ import xarray as xr
 
 def merge_variable_days_preprocess(dataset_dir, file, lat, lon, variable_name):
     """
-    Abre un archivo NetCDF (expandiendo la dimensión 'time'), 
-    filtra la región y mantiene sólo 'variable_name'.
+    Loads a NetCDF file, expands its 'time' dimension, filters the dataset to a specified region, 
+    and retains only the specified variable.
+
+    The file name is expected to contain a date in the format where the date appears after the first dot
+    and consists of eight digits (YYYYMMDD). This date is used to set the 'time' coordinate of the dataset.
+
+    Parameters
+    ----------
+    dataset_dir : str
+        The directory where the NetCDF file is located.
+    file : str
+        The name of the NetCDF file.
+    lat : list or tuple of float
+        A list or tuple containing the minimum and maximum latitudes [min_lat, max_lat] for filtering.
+    lon : list or tuple of float
+        A list or tuple containing the minimum and maximum longitudes [min_lon, max_lon] for filtering.
+    variable_name : str
+        The name of the variable to retain in the dataset.
+
+    Returns
+    -------
+    xr.Dataset
+        An xarray Dataset containing only the specified variable, with the 'time' dimension expanded 
+        (and set to a single date extracted from the file name) and filtered to the specified geographic region.
     """
     import datetime as dt
 

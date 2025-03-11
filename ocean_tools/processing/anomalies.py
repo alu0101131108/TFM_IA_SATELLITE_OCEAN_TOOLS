@@ -4,8 +4,23 @@ import xarray as xr
 
 def get_deseasonalized_anomaly_ds(ds, variable_name):
     """
-    Lee un dataset y calcula la anomalía (deseasonalizada) para 'variable_name',
-    restando a cada mes su promedio mensual respectivo.
+    Computes the deseasonalized anomaly for a specified variable in an xarray Dataset.
+
+    For each month (from 1 to 12), the function calculates the mean of the variable over all 
+    time steps corresponding to that month. Then, for every time step in the dataset, it subtracts 
+    the mean value of the corresponding month, effectively removing the seasonal cycle.
+
+    Parameters
+    ----------
+    ds : xr.Dataset
+        Input dataset with at least 'time' and spatial dimensions (e.g., 'lat' and 'lon').
+    variable_name : str
+        Name of the variable (e.g., 'sst') for which the deseasonalized anomaly is to be computed.
+
+    Returns
+    -------
+    xr.Dataset
+        The input dataset with the specified variable updated to represent its deseasonalized anomaly.
     """
     month_target_means = []
     for i in range(1, 13):
