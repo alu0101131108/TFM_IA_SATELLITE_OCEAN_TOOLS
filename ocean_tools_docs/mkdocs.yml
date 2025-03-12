@@ -18,3 +18,11 @@ plugins:
             show_root_heading: true     # Keep module headings visible
             show_root_full_path: false  # Simplify headings
 
+theme:
+  name: readthedocs
+  palette:
+    primary: blue
+    accent: light blue
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
