@@ -168,16 +168,28 @@
 <p>The function reads a newline-separated list of URLs, filters out files that already exist in the destination,
 and downloads each file using the browser (or directly if it is a PNG). It tracks and prints progress.</p>
 <h5 id="ocean_tools.data_handling.download.bulk_download_files--parameters">Parameters</h5>
-<p>file_urls : str
-    A string containing URLs (one per line) of the files to download.
-destination_path : str
-    The directory where the downloaded files will be stored.
-max_files : int, optional
-    The maximum number of files to download. If 0, all pending files are downloaded. Default is 0.
-file_timeout : int, optional
-    Maximum time (in seconds) to wait for each file to appear in the Downloads folder. Default is 60.
-verbose : bool, optional
-    If True, prints progress and status messages. Default is False.</p>
+<ul>
+<li>file_urls : str<ul>
+<li>A string containing URLs (one per line) of the files to download.</li>
+</ul>
+</li>
+<li>destination_path : str<ul>
+<li>The directory where the downloaded files will be stored.</li>
+</ul>
+</li>
+<li>max_files : int, optional<ul>
+<li>The maximum number of files to download. If 0, all pending files are downloaded. Default is 0.</li>
+</ul>
+</li>
+<li>file_timeout : int, optional<ul>
+<li>Maximum time (in seconds) to wait for each file to appear in the Downloads folder. Default is 60.</li>
+</ul>
+</li>
+<li>verbose : bool, optional<ul>
+<li>If True, prints progress and status messages. Default is False.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.data_handling.download.bulk_download_files--returns">Returns</h5>
 <p>None</p>
 
@@ -202,14 +214,24 @@ and moves it to the specified destination path.</p>
 <p>For PNG files, the image is downloaded directly. For other file types, the URL is opened in the browser
 and the function waits for the file to appear in the Downloads folder before moving it.</p>
 <h5 id="ocean_tools.data_handling.download.download_file_using_browser_and_move--parameters">Parameters</h5>
-<p>in_url : str
-    The URL of the file to download.
-destination_path : str
-    The destination directory where the file should be moved.
-timeout : int, optional
-    Maximum time (in seconds) to wait for the file to appear in the Downloads folder. Default is 60.
-verbose : bool, optional
-    If True, prints status messages. Default is False.</p>
+<ul>
+<li>in_url : str<ul>
+<li>The URL of the file to download.</li>
+</ul>
+</li>
+<li>destination_path : str<ul>
+<li>The destination directory where the file should be moved.</li>
+</ul>
+</li>
+<li>timeout : int, optional<ul>
+<li>Maximum time (in seconds) to wait for the file to appear in the Downloads folder. Default is 60.</li>
+</ul>
+</li>
+<li>verbose : bool, optional<ul>
+<li>If True, prints status messages. Default is False.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.data_handling.download.download_file_using_browser_and_move--returns">Returns</h5>
 <p>None</p>
 
@@ -231,15 +253,27 @@ verbose : bool, optional
 
         <p>Downloads an image file (PNG) from a given URL and saves it to the specified destination.</p>
 <h5 id="ocean_tools.data_handling.download.download_image_from_url--parameters">Parameters</h5>
-<p>image_url : str
-    The URL of the image to download.
-destination_path : str
-    The file path where the downloaded image will be saved.
-verbose : bool, optional
-    If True, prints a success message upon completion. Default is False.</p>
+<ul>
+<li>image_url : str<ul>
+<li>The URL of the image to download.</li>
+</ul>
+</li>
+<li>destination_path : str<ul>
+<li>The file path where the downloaded image will be saved.</li>
+</ul>
+</li>
+<li>verbose : bool, optional<ul>
+<li>If True, prints a success message upon completion. Default is False.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.data_handling.download.download_image_from_url--raises">Raises</h5>
-<p>requests.exceptions.RequestException
-    If the HTTP request for downloading fails.</p>
+<ul>
+<li>requests.exceptions.RequestException<ul>
+<li>If the HTTP request for downloading fails.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.data_handling.download.download_image_from_url--returns">Returns</h5>
 <p>None</p>
 
@@ -263,17 +297,31 @@ verbose : bool, optional
 <p>This function continuously checks the Downloads directory for the presence of the specified file.
 Once the file is found (or the timeout is exceeded), it is moved to the destination path.</p>
 <h5 id="ocean_tools.data_handling.download.wait_for_and_move_file--parameters">Parameters</h5>
-<p>file_name : str
-    The name of the file to wait for.
-destination_path : str
-    The full path (including file name) where the file should be moved.
-timeout : int, optional
-    Maximum time (in seconds) to wait for the file. Default is 60.
-verbose : bool, optional
-    If True, prints status messages during the waiting process. Default is False.</p>
+<ul>
+<li>file_name : str<ul>
+<li>The name of the file to wait for.</li>
+</ul>
+</li>
+<li>destination_path : str<ul>
+<li>The full path (including file name) where the file should be moved.</li>
+</ul>
+</li>
+<li>timeout : int, optional<ul>
+<li>Maximum time (in seconds) to wait for the file. Default is 60.</li>
+</ul>
+</li>
+<li>verbose : bool, optional<ul>
+<li>If True, prints status messages during the waiting process. Default is False.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.data_handling.download.wait_for_and_move_file--raises">Raises</h5>
-<p>FileNotFoundError
-    If the file is not found in the Downloads folder within the specified timeout.</p>
+<ul>
+<li>FileNotFoundError<ul>
+<li>If the file is not found in the Downloads folder within the specified timeout.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.data_handling.download.wait_for_and_move_file--returns">Returns</h5>
 <p>None</p>
 
@@ -339,14 +387,22 @@ groups the dates by month, and calculates the number of available files versus t
 ideal number (based on the number of days in each month, unless monthly is True).
 Optionally, it plots the number of available and missing files per month.</p>
 <h5 id="ocean_tools.data_handling.availability.data_availability_analysis--parameters">Parameters</h5>
-<p>urls_filepath : str
-    Path to the text file containing URLs (one URL per line). The file names are expected
-    to contain a date in the format YYYYMMDD after a dot.
-monthly : bool, optional
-    If True, assumes each month should have one file (instead of the total number of days in the month).
-    Default is False.
-plot : bool, optional
-    If True, displays a bar chart of file availability. Default is True.</p>
+<ul>
+<li>urls_filepath : str<ul>
+<li>Path to the text file containing URLs (one URL per line). The file names are expected
+to contain a date in the format YYYYMMDD after a dot.</li>
+</ul>
+</li>
+<li>monthly : bool, optional<ul>
+<li>If True, assumes each month should have one file (instead of the total number of days in the month).
+Default is False.</li>
+</ul>
+</li>
+<li>plot : bool, optional<ul>
+<li>If True, displays a bar chart of file availability. Default is True.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.data_handling.availability.data_availability_analysis--returns">Returns</h5>
 <p>None</p>
 

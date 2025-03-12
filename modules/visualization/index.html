@@ -181,34 +181,62 @@
 Each subplot is plotted using Cartopy with coastlines and gridlines. If titles are provided,
 each subplot is given a title.</p>
 <h5 id="ocean_tools.visualization.maps.plot_n_spatial_variable--parameters">Parameters</h5>
-<p>target_list : list
-    List of 2D arrays (lat, lon) to plot.
-lat : list or array-like
-    1D array of latitude values.
-lon : list or array-like
-    1D array of longitude values.
-nrows : int
-    Number of rows in the subplot grid.
-ncols : int
-    Number of columns in the subplot grid.
-i_width : int, optional
-    Width of each subplot in inches (default is 8).
-i_height : int, optional
-    Height of each subplot in inches (default is 8).
-clim : list, optional
-    Color limits as [min, max] (default is [0, 40]).
-titles : list, optional
-    List of titles for each subplot (default is an empty list).
-plot_label : str, optional
-    Label for the colorbar (default is 'Variable').
-cmap : str, optional
-    Colormap to use. If 'labels', a discrete colormap is generated (default is 'RdBu_r').
-norm_mode : str, optional
-    Normalization mode for color scaling. Options are:
-      - 'none': no normalization,
-      - 'log': logarithmic normalization,
-      - 'symlog': symmetric logarithmic normalization.
-      (Default is 'none'.)</p>
+<ul>
+<li>target_list : list<ul>
+<li>List of 2D arrays (lat, lon) to plot.</li>
+</ul>
+</li>
+<li>lat : list or array-like<ul>
+<li>1D array of latitude values.</li>
+</ul>
+</li>
+<li>lon : list or array-like<ul>
+<li>1D array of longitude values.</li>
+</ul>
+</li>
+<li>nrows : int<ul>
+<li>Number of rows in the subplot grid.</li>
+</ul>
+</li>
+<li>ncols : int<ul>
+<li>Number of columns in the subplot grid.</li>
+</ul>
+</li>
+<li>i_width : int, optional<ul>
+<li>Width of each subplot in inches (default is 8).</li>
+</ul>
+</li>
+<li>i_height : int, optional<ul>
+<li>Height of each subplot in inches (default is 8).</li>
+</ul>
+</li>
+<li>clim : list, optional<ul>
+<li>Color limits as [min, max] (default is [0, 40]).</li>
+</ul>
+</li>
+<li>titles : list, optional<ul>
+<li>List of titles for each subplot (default is an empty list).</li>
+</ul>
+</li>
+<li>plot_label : str, optional<ul>
+<li>Label for the colorbar (default is 'Variable').</li>
+</ul>
+</li>
+<li>cmap : str, optional<ul>
+<li>Colormap to use. If 'labels', a discrete colormap is generated (default is 'RdBu_r').</li>
+</ul>
+</li>
+<li>norm_mode : str, optional<ul>
+<li>Normalization mode for color scaling. Options are:<ul>
+<li>'none': no normalization,</li>
+<li>'log': logarithmic normalization,</li>
+<li>'symlog': symmetric logarithmic normalization.</li>
+</ul>
+</li>
+<li>(Default is 'none'.)</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.maps.plot_n_spatial_variable--returns">Returns</h5>
 <p>None</p>
 
@@ -232,30 +260,54 @@ norm_mode : str, optional
 <p>The function displays the data as a pcolormesh plot with coastlines and gridlines,
 applying a specified colormap and normalization.</p>
 <h5 id="ocean_tools.visualization.maps.plot_spatial_variable--parameters">Parameters</h5>
-<p>target : array-like
-    2D array (lat, lon) of the variable to plot.
-lat : array-like
-    1D array of latitude values.
-lon : array-like
-    1D array of longitude values.
-i_width : int, optional
-    Figure width in inches (default is 8).
-i_height : int, optional
-    Figure height in inches (default is 8).
-clim : list, optional
-    Color limits as [min, max] (default is [0, 40]).
-title : str, optional
-    Title of the plot (default is an empty string).
-plot_label : str, optional
-    Label for the colorbar (default is 'Variable').
-cmap : str, optional
-    Colormap to use (default is 'RdBu_r').
-norm_mode : str, optional
-    Normalization mode for color scaling. Options are:
-      - 'none': no normalization,
-      - 'log': logarithmic normalization,
-      - 'symlog': symmetric logarithmic normalization.
-      (Default is 'none'.)</p>
+<ul>
+<li>target : array-like<ul>
+<li>2D array (lat, lon) of the variable to plot.</li>
+</ul>
+</li>
+<li>lat : array-like<ul>
+<li>1D array of latitude values.</li>
+</ul>
+</li>
+<li>lon : array-like<ul>
+<li>1D array of longitude values.</li>
+</ul>
+</li>
+<li>i_width : int, optional<ul>
+<li>Figure width in inches (default is 8).</li>
+</ul>
+</li>
+<li>i_height : int, optional<ul>
+<li>Figure height in inches (default is 8).</li>
+</ul>
+</li>
+<li>clim : list, optional<ul>
+<li>Color limits as [min, max] (default is [0, 40]).</li>
+</ul>
+</li>
+<li>title : str, optional<ul>
+<li>Title of the plot (default is an empty string).</li>
+</ul>
+</li>
+<li>plot_label : str, optional<ul>
+<li>Label for the colorbar (default is 'Variable').</li>
+</ul>
+</li>
+<li>cmap : str, optional<ul>
+<li>Colormap to use (default is 'RdBu_r').</li>
+</ul>
+</li>
+<li>norm_mode : str, optional<ul>
+<li>Normalization mode for color scaling. Options are:<ul>
+<li>'none': no normalization,</li>
+<li>'log': logarithmic normalization,</li>
+<li>'symlog': symmetric logarithmic normalization.</li>
+</ul>
+</li>
+<li>(Default is 'none'.)</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.maps.plot_spatial_variable--returns">Returns</h5>
 <p>None</p>
 
@@ -319,23 +371,41 @@ norm_mode : str, optional
 a moving average smoothing (if smooth_factor &gt;= 1) and plots the resulting line with the corresponding label.
 A vertical line at x=0 is drawn for reference.</p>
 <h5 id="ocean_tools.visualization.difference_plots.plot_latitudinal_average_diffences--parameters">Parameters</h5>
-<p>diffs : list
-    List of 1D arrays representing average differences (e.g., differences averaged over longitude).
-labels : list
-    List of labels for each profile (e.g., season names).
-lat : np.ndarray, optional
-    1D array of latitude values. Required if diffs do not include coordinate information.
-smooth_factor : float, optional
-    Smoothing factor in the same units as latitude. If &gt;= 1, moving average smoothing is applied.
-    Default is 0 (no smoothing).
-i_width : int, optional
-    Width of the figure in inches (default is 5).
-i_height : int, optional
-    Height of the figure in inches (default is 5).
-plot_label : str, optional
-    Label for the x-axis. If provided, used as the x-axis label.
-plot_title : str, optional
-    Title of the plot (default is "Latitudinal Average Differences").</p>
+<ul>
+<li>diffs : list<ul>
+<li>List of 1D arrays representing average differences (e.g., differences averaged over longitude).</li>
+</ul>
+</li>
+<li>labels : list<ul>
+<li>List of labels for each profile (e.g., season names).</li>
+</ul>
+</li>
+<li>lat : np.ndarray, optional<ul>
+<li>1D array of latitude values. Required if diffs do not include coordinate information.</li>
+</ul>
+</li>
+<li>smooth_factor : float, optional<ul>
+<li>Smoothing factor in the same units as latitude. If &gt;= 1, moving average smoothing is applied.</li>
+<li>Default is 0 (no smoothing).</li>
+</ul>
+</li>
+<li>i_width : int, optional<ul>
+<li>Width of the figure in inches (default is 5).</li>
+</ul>
+</li>
+<li>i_height : int, optional<ul>
+<li>Height of the figure in inches (default is 5).</li>
+</ul>
+</li>
+<li>plot_label : str, optional<ul>
+<li>Label for the x-axis. If provided, used as the x-axis label.</li>
+</ul>
+</li>
+<li>plot_title : str, optional<ul>
+<li>Title of the plot (default is "Latitudinal Average Differences").</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.difference_plots.plot_latitudinal_average_diffences--returns">Returns</h5>
 <p>None</p>
 
@@ -360,23 +430,41 @@ plot_title : str, optional
 a moving average smoothing (if smooth_factor &gt;= 1) and plots the resulting line with the corresponding label.
 A horizontal line at y=0 is drawn for reference.</p>
 <h5 id="ocean_tools.visualization.difference_plots.plot_longitudinal_average_diffences--parameters">Parameters</h5>
-<p>diffs : list
-    List of 1D arrays representing average differences (e.g., differences averaged over latitude).
-labels : list
-    List of labels for each profile (e.g., season names or month numbers).
-lon : np.ndarray, optional
-    1D array of longitude values. Required if diffs do not include coordinate information.
-smooth_factor : float, optional
-    Smoothing factor in the same units as longitude. If &gt;= 1, moving average smoothing is applied.
-    Default is 0 (no smoothing).
-i_width : int, optional
-    Width of the figure in inches (default is 5).
-i_height : int, optional
-    Height of the figure in inches (default is 5).
-plot_label : str, optional
-    Label for the y-axis. If provided, used as the y-axis label.
-plot_title : str, optional
-    Title of the plot (default is "Longitudinal Average Differences").</p>
+<ul>
+<li>diffs : list<ul>
+<li>List of 1D arrays representing average differences (e.g., differences averaged over latitude).</li>
+</ul>
+</li>
+<li>labels : list<ul>
+<li>List of labels for each profile (e.g., season names or month numbers).</li>
+</ul>
+</li>
+<li>lon : np.ndarray, optional<ul>
+<li>1D array of longitude values. Required if diffs do not include coordinate information.</li>
+</ul>
+</li>
+<li>smooth_factor : float, optional<ul>
+<li>Smoothing factor in the same units as longitude. If &gt;= 1, moving average smoothing is applied.</li>
+<li>Default is 0 (no smoothing).</li>
+</ul>
+</li>
+<li>i_width : int, optional<ul>
+<li>Width of the figure in inches (default is 5).</li>
+</ul>
+</li>
+<li>i_height : int, optional<ul>
+<li>Height of the figure in inches (default is 5).</li>
+</ul>
+</li>
+<li>plot_label : str, optional<ul>
+<li>Label for the y-axis. If provided, used as the y-axis label.</li>
+</ul>
+</li>
+<li>plot_title : str, optional<ul>
+<li>Title of the plot (default is "Longitudinal Average Differences").</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.difference_plots.plot_longitudinal_average_diffences--returns">Returns</h5>
 <p>None</p>
 
@@ -398,16 +486,28 @@ plot_title : str, optional
 
         <p>Plots overall average differences as a horizontal bar chart.</p>
 <h5 id="ocean_tools.visualization.difference_plots.plot_total_average_differences--parameters">Parameters</h5>
-<p>diffs : list or array-like
-    A list or array of scalar difference values.
-labels : list or array-like
-    A list of labels corresponding to each difference (e.g., season names or month numbers).
-i_width : int, optional
-    Width of the figure in inches (default is 10).
-i_height : int, optional
-    Height of the figure in inches (default is 5).
-plot_title : str, optional
-    Title of the plot (default is "Average Differences").</p>
+<ul>
+<li>diffs : list or array-like<ul>
+<li>A list or array of scalar difference values.</li>
+</ul>
+</li>
+<li>labels : list or array-like<ul>
+<li>A list of labels corresponding to each difference (e.g., season names or month numbers).</li>
+</ul>
+</li>
+<li>i_width : int, optional<ul>
+<li>Width of the figure in inches (default is 10).</li>
+</ul>
+</li>
+<li>i_height : int, optional<ul>
+<li>Height of the figure in inches (default is 5).</li>
+</ul>
+</li>
+<li>plot_title : str, optional<ul>
+<li>Title of the plot (default is "Average Differences").</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.difference_plots.plot_total_average_differences--returns">Returns</h5>
 <p>None</p>
 
@@ -472,18 +572,32 @@ The function creates subplots for each feature, plotting a horizontal stacked hi
 a uniform binning based on the feature's min and max values. A legend maps each cluster (by its index)
 to a distinct color.</p>
 <h5 id="ocean_tools.visualization.feature_plots.plot_feature_histograms--parameters">Parameters</h5>
-<p>df : pandas.DataFrame
-    DataFrame where rows are clusters and columns are features.
-n_rows : int
-    Number of rows in the subplot grid.
-n_cols : int
-    Number of columns in the subplot grid.
-i_width : int
-    Figure width in inches.
-i_height : int
-    Figure height in inches.
-title : str
-    Overall title for the figure.</p>
+<ul>
+<li>df : pandas.DataFrame<ul>
+<li>DataFrame where rows are clusters and columns are features.</li>
+</ul>
+</li>
+<li>n_rows : int<ul>
+<li>Number of rows in the subplot grid.</li>
+</ul>
+</li>
+<li>n_cols : int<ul>
+<li>Number of columns in the subplot grid.</li>
+</ul>
+</li>
+<li>i_width : int<ul>
+<li>Figure width in inches.</li>
+</ul>
+</li>
+<li>i_height : int<ul>
+<li>Figure height in inches.</li>
+</ul>
+</li>
+<li>title : str<ul>
+<li>Overall title for the figure.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.feature_plots.plot_feature_histograms--returns">Returns</h5>
 <p>None</p>
 
@@ -509,14 +623,24 @@ point representing a cluster (based on the DataFrame index) and colored using a 
 subplots display the feature name. Additionally, the leftmost column subplots have y-axis ticks (showing the 
 min and max of the feature) and the bottom row subplots have x-axis ticks similarly.</p>
 <h5 id="ocean_tools.visualization.feature_plots.plot_feature_scatter_grid--parameters">Parameters</h5>
-<p>df : pandas.DataFrame
-    DataFrame with clusters as rows and features as columns.
-i_width : int
-    Overall figure width in inches.
-i_height : int
-    Overall figure height in inches.
-title : str
-    Overall title for the figure.</p>
+<ul>
+<li>df : pandas.DataFrame<ul>
+<li>DataFrame with clusters as rows and features as columns.</li>
+</ul>
+</li>
+<li>i_width : int<ul>
+<li>Overall figure width in inches.</li>
+</ul>
+</li>
+<li>i_height : int<ul>
+<li>Overall figure height in inches.</li>
+</ul>
+</li>
+<li>title : str<ul>
+<li>Overall title for the figure.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.feature_plots.plot_feature_scatter_grid--returns">Returns</h5>
 <p>None</p>
 
@@ -574,21 +698,20 @@ title : str
 
     <div class="doc doc-contents ">
 
-
-
-<details class="generates-a-clustering-experiment-feature-report-that-includes" open>
-  <summary>Generates a clustering experiment feature report that includes</summary>
-  <ul>
-<li>A printed table of cluster features.</li>
-<li>A grid of histograms for each cluster feature.</li>
-<li>A scatterplot matrix of cluster features.</li>
-</ul>
-</details>        <p>The function prints the feature table and then calls helper functions to plot the histograms 
+        <p>Generates a clustering experiment feature report that includes:
+* A printed table of cluster features.
+* A grid of histograms for each cluster feature.
+* A scatterplot matrix of cluster features.</p>
+<p>The function prints the feature table and then calls helper functions to plot the histograms 
 and scatterplot matrix using the cluster features stored in a dictionary.</p>
 <h5 id="ocean_tools.visualization.reports.plot_n_clustering_experiment_feature_report--parameters">Parameters</h5>
-<p>features : dict
-    Dictionary containing cluster features, where keys are cluster IDs (as int) and values are dictionaries
-    mapping feature names to computed feature values.</p>
+<ul>
+<li>features : dict<ul>
+<li>Dictionary containing cluster features, where keys are cluster IDs (as int) and values are dictionaries
+mapping feature names to computed feature values.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.reports.plot_n_clustering_experiment_feature_report--returns">Returns</h5>
 <p>None</p>
 
@@ -610,36 +733,61 @@ and scatterplot matrix using the cluster features stored in a dictionary.</p>
 
         <p>Generates a comprehensive EOF report displaying spatial and temporal information for each EOF.</p>
 <p>For each EOF (Empirical Orthogonal Function), the report includes:
-  - The spatial pattern (EOF) plotted on a map.
-  - The corresponding time series (PC) plotted either as a line chart or as vertical bars (enhanced_bars).
-  - The spatial fields corresponding to the maximum and minimum values of the PC,
-    with the associated date (month) indicated in the title.</p>
+* The spatial pattern (EOF) plotted on a map.
+* The corresponding time series (PC) plotted either as a line chart or as vertical bars (enhanced_bars).
+* The spatial fields corresponding to the maximum and minimum values of the PC, with the associated date (month) indicated in the title.</p>
 <h5 id="ocean_tools.visualization.reports.plot_n_eof_report--parameters">Parameters</h5>
-<p>patterns : list of 2D arrays
-    List of spatial patterns (EOFs), each with shape (lat, lon).
-time_series : list of 1D arrays
-    List of time series (PCs) corresponding to each EOF.
-max_mins : list of lists
-    List of pairs [max_pattern, min_pattern] for each EOF, where each pattern is a 2D array (lat, lon).
-lat : array-like
-    1D array of latitude values.
-lon : array-like
-    1D array of longitude values.
-time_dim : array-like
-    1D array of time values corresponding to the time series.
-clim_pattern : list, optional
-    Color limits for the EOF spatial patterns (default is [-0.01, 0.01]).
-clim_maxmin : list, optional
-    Color limits for the max/min spatial fields (default is [-5, 5]).
-cmap : str, optional
-    Colormap to use for all plots (default is 'RdBu_r').
-pat_norm_mode : str, optional
-    Normalization mode for EOF patterns; options are 'none', 'log', or 'symlog' (default is 'none').
-maxmin_norm_mode : str, optional
-    Normalization mode for max/min fields; options are 'none', 'log', or 'symlog' (default is 'none').
-timeseries_type : str, optional
-    Type of time series plot: 'line' for a simple line plot or 'enhanced_bars' for a vertical bar chart with color-coded bars.
-    Default is 'line'.</p>
+<ul>
+<li>patterns : list of 2D arrays<ul>
+<li>List of spatial patterns (EOFs), each with shape (lat, lon).</li>
+</ul>
+</li>
+<li>time_series : list of 1D arrays<ul>
+<li>List of time series (PCs) corresponding to each EOF.</li>
+</ul>
+</li>
+<li>max_mins : list of lists<ul>
+<li>List of pairs [max_pattern, min_pattern] for each EOF, where each pattern is a 2D array (lat, lon).</li>
+</ul>
+</li>
+<li>lat : array-like<ul>
+<li>1D array of latitude values.</li>
+</ul>
+</li>
+<li>lon : array-like<ul>
+<li>1D array of longitude values.</li>
+</ul>
+</li>
+<li>time_dim : array-like<ul>
+<li>1D array of time values corresponding to the time series.</li>
+</ul>
+</li>
+<li>clim_pattern : list, optional<ul>
+<li>Color limits for the EOF spatial patterns (default is [-0.01, 0.01]).</li>
+</ul>
+</li>
+<li>clim_maxmin : list, optional<ul>
+<li>Color limits for the max/min spatial fields (default is [-5, 5]).</li>
+</ul>
+</li>
+<li>cmap : str, optional<ul>
+<li>Colormap to use for all plots (default is 'RdBu_r').</li>
+</ul>
+</li>
+<li>pat_norm_mode : str, optional<ul>
+<li>Normalization mode for EOF patterns; options are 'none', 'log', or 'symlog' (default is 'none').</li>
+</ul>
+</li>
+<li>maxmin_norm_mode : str, optional<ul>
+<li>Normalization mode for max/min fields; options are 'none', 'log', or 'symlog' (default is 'none').</li>
+</ul>
+</li>
+<li>timeseries_type : str, optional<ul>
+<li>Type of time series plot: 'line' for a simple line plot or 'enhanced_bars' for a vertical bar chart with color-coded bars.</li>
+<li>Default is 'line'.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.visualization.reports.plot_n_eof_report--returns">Returns</h5>
 <p>None</p>
 
