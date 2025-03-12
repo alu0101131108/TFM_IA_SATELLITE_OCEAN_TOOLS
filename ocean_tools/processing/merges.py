@@ -13,21 +13,21 @@ def merge_variable_days_preprocess(dataset_dir, file, lat, lon, variable_name):
 
     Parameters
     ----------
-    dataset_dir : str
-        The directory where the NetCDF file is located.
-    file : str
-        The name of the NetCDF file.
-    lat : list or tuple of float
-        A list or tuple containing the minimum and maximum latitudes [min_lat, max_lat] for filtering.
-    lon : list or tuple of float
-        A list or tuple containing the minimum and maximum longitudes [min_lon, max_lon] for filtering.
-    variable_name : str
-        The name of the variable to retain in the dataset.
+    * dataset_dir : str
+        * The directory where the NetCDF file is located.
+    * file : str
+        * The name of the NetCDF file.
+    * lat : list or tuple of float
+        * A list or tuple containing the minimum and maximum latitudes [min_lat, max_lat] for filtering.
+    * lon : list or tuple of float
+        * A list or tuple containing the minimum and maximum longitudes [min_lon, max_lon] for filtering.
+    * variable_name : str
+        * The name of the variable to retain in the dataset.
 
     Returns
     -------
-    xr.Dataset
-        An xarray Dataset containing only the specified variable, with the 'time' dimension expanded 
+    * xr.Dataset
+        * An xarray Dataset containing only the specified variable, with the 'time' dimension expanded 
         (and set to a single date extracted from the file name) and filtered to the specified geographic region.
     """
     import datetime as dt

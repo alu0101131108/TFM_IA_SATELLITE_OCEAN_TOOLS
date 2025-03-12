@@ -12,15 +12,15 @@ def get_deseasonalized_anomaly_ds(ds, variable_name):
 
     Parameters
     ----------
-    ds : xr.Dataset
-        Input dataset with at least 'time' and spatial dimensions (e.g., 'lat' and 'lon').
-    variable_name : str
-        Name of the variable (e.g., 'sst') for which the deseasonalized anomaly is to be computed.
+    * ds : xr.Dataset
+        * Input dataset with at least 'time' and spatial dimensions (e.g., 'lat' and 'lon').
+    * Variable_name : str
+        * Name of the variable (e.g., 'sst') for which the deseasonalized anomaly is to be computed.
 
     Returns
     -------
-    xr.Dataset
-        The input dataset with the specified variable updated to represent its deseasonalized anomaly.
+    * xr.Dataset
+        * The input dataset with the specified variable updated to represent its deseasonalized anomaly.
     """
     month_target_means = []
     for i in range(1, 13):

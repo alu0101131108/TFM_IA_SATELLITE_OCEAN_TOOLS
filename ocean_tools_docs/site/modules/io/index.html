@@ -166,11 +166,19 @@
 
         <p>Loads a NetCDF file and returns the resulting xarray Dataset.</p>
 <h5 id="ocean_tools.io.readers.get_xarray_from_file--parameters">Parameters</h5>
-<p>file_path : str
-    The full file path to the NetCDF file.</p>
+<ul>
+<li>file_path : str<ul>
+<li>The full file path to the NetCDF file.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.io.readers.get_xarray_from_file--returns">Returns</h5>
-<p>xr.Dataset
-    The xarray Dataset loaded from the specified file.</p>
+<ul>
+<li>xr.Dataset<ul>
+<li>The xarray Dataset loaded from the specified file.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -234,14 +242,24 @@ The ndarray must be either 3-dimensional (with dimensions [time, lat, lon]) or 2
 (with dimensions [lat, lon]). If the specified file_path already exists, an incremental suffix
 is appended to the filename.</p>
 <h5 id="ocean_tools.io.writers.save_ndarray_as_netcdf_to_file--parameters">Parameters</h5>
-<p>ref_ds : xr.Dataset
-    A reference dataset containing the coordinate variables 'time', 'lat', and 'lon'.
-ndarray : np.ndarray
-    The NumPy array to be saved. Must have shape (time, lat, lon) or (lat, lon).
-var_name : str
-    The name to assign to the variable in the NetCDF file.
-file_path : str
-    The desired output file path for the NetCDF file.</p>
+<ul>
+<li>ref_ds : xr.Dataset<ul>
+<li>A reference dataset containing the coordinate variables 'time', 'lat', and 'lon'.</li>
+</ul>
+</li>
+<li>ndarray : np.ndarray<ul>
+<li>The NumPy array to be saved. Must have shape (time, lat, lon) or (lat, lon).</li>
+</ul>
+</li>
+<li>var_name : str<ul>
+<li>The name to assign to the variable in the NetCDF file.</li>
+</ul>
+</li>
+<li>file_path : str<ul>
+<li>The desired output file path for the NetCDF file.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.io.writers.save_ndarray_as_netcdf_to_file--returns">Returns</h5>
 <p>None</p>
 
@@ -266,12 +284,20 @@ file_path : str
 extension). If a file with that name already exists, it appends an incremental suffix to generate a 
 unique filename, then saves the variable using pickle.</p>
 <h5 id="ocean_tools.io.writers.store_pickle_variable--parameters">Parameters</h5>
-<p>variable : Any
-    The Python variable (pickle-able object) to be stored.
-store_dir : str
-    The directory where the pickle file will be saved.
-file_name : str
-    The desired base name for the pickle file (without the .pkl extension).</p>
+<ul>
+<li>variable : Any<ul>
+<li>The Python variable (pickle-able object) to be stored.</li>
+</ul>
+</li>
+<li>store_dir : str<ul>
+<li>The directory where the pickle file will be saved.</li>
+</ul>
+</li>
+<li>file_name : str<ul>
+<li>The desired base name for the pickle file (without the .pkl extension).</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.io.writers.store_pickle_variable--returns">Returns</h5>
 <p>None</p>
 

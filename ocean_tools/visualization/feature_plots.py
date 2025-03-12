@@ -16,18 +16,18 @@ def plot_feature_histograms(df, n_rows, n_cols, i_width, i_height, title):
 
     Parameters
     ----------
-    df : pandas.DataFrame
-        DataFrame where rows are clusters and columns are features.
-    n_rows : int
-        Number of rows in the subplot grid.
-    n_cols : int
-        Number of columns in the subplot grid.
-    i_width : int
-        Figure width in inches.
-    i_height : int
-        Figure height in inches.
-    title : str
-        Overall title for the figure.
+    * df : pandas.DataFrame
+        * DataFrame where rows are clusters and columns are features.
+    * n_rows : int
+        * Number of rows in the subplot grid.
+    * n_cols : int
+        * Number of columns in the subplot grid.
+    * i_width : int
+        * Figure width in inches.
+    * i_height : int
+        * Figure height in inches.
+    * title : str
+        * Overall title for the figure.
 
     Returns
     -------
@@ -103,14 +103,14 @@ def plot_feature_scatter_grid(df, i_width, i_height, title):
 
     Parameters
     ----------
-    df : pandas.DataFrame
-        DataFrame with clusters as rows and features as columns.
-    i_width : int
-        Overall figure width in inches.
-    i_height : int
-        Overall figure height in inches.
-    title : str
-        Overall title for the figure.
+    * df : pandas.DataFrame
+        * DataFrame with clusters as rows and features as columns.
+    * i_width : int
+        * Overall figure width in inches.
+    * i_height : int
+        * Overall figure height in inches.
+    * title : str
+        * Overall title for the figure.
 
     Returns
     -------

@@ -8,13 +8,13 @@ def get_xarray_from_file(file_path):
 
     Parameters
     ----------
-    file_path : str
-        The full file path to the NetCDF file.
+    * file_path : str
+        * The full file path to the NetCDF file.
 
     Returns
     -------
-    xr.Dataset
-        The xarray Dataset loaded from the specified file.
+    * xr.Dataset
+        * The xarray Dataset loaded from the specified file.
     """
     ds = xr.open_dataset(file_path)
     return ds

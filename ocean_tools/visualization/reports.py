@@ -13,38 +13,37 @@ def plot_n_eof_report(patterns, time_series, max_mins, lat, lon, time_dim,
     Generates a comprehensive EOF report displaying spatial and temporal information for each EOF.
     
     For each EOF (Empirical Orthogonal Function), the report includes:
-      - The spatial pattern (EOF) plotted on a map.
-      - The corresponding time series (PC) plotted either as a line chart or as vertical bars (enhanced_bars).
-      - The spatial fields corresponding to the maximum and minimum values of the PC,
-        with the associated date (month) indicated in the title.
+    * The spatial pattern (EOF) plotted on a map.
+    * The corresponding time series (PC) plotted either as a line chart or as vertical bars (enhanced_bars).
+    * The spatial fields corresponding to the maximum and minimum values of the PC, with the associated date (month) indicated in the title.
     
     Parameters
     ----------
-    patterns : list of 2D arrays
-        List of spatial patterns (EOFs), each with shape (lat, lon).
-    time_series : list of 1D arrays
-        List of time series (PCs) corresponding to each EOF.
-    max_mins : list of lists
-        List of pairs [max_pattern, min_pattern] for each EOF, where each pattern is a 2D array (lat, lon).
-    lat : array-like
-        1D array of latitude values.
-    lon : array-like
-        1D array of longitude values.
-    time_dim : array-like
-        1D array of time values corresponding to the time series.
-    clim_pattern : list, optional
-        Color limits for the EOF spatial patterns (default is [-0.01, 0.01]).
-    clim_maxmin : list, optional
-        Color limits for the max/min spatial fields (default is [-5, 5]).
-    cmap : str, optional
-        Colormap to use for all plots (default is 'RdBu_r').
-    pat_norm_mode : str, optional
-        Normalization mode for EOF patterns; options are 'none', 'log', or 'symlog' (default is 'none').
-    maxmin_norm_mode : str, optional
-        Normalization mode for max/min fields; options are 'none', 'log', or 'symlog' (default is 'none').
-    timeseries_type : str, optional
-        Type of time series plot: 'line' for a simple line plot or 'enhanced_bars' for a vertical bar chart with color-coded bars.
-        Default is 'line'.
+    * patterns : list of 2D arrays
+        * List of spatial patterns (EOFs), each with shape (lat, lon).
+    * time_series : list of 1D arrays
+        * List of time series (PCs) corresponding to each EOF.
+    * max_mins : list of lists
+        * List of pairs [max_pattern, min_pattern] for each EOF, where each pattern is a 2D array (lat, lon).
+    * lat : array-like
+        * 1D array of latitude values.
+    * lon : array-like
+        * 1D array of longitude values.
+    * time_dim : array-like
+        * 1D array of time values corresponding to the time series.
+    * clim_pattern : list, optional
+        * Color limits for the EOF spatial patterns (default is [-0.01, 0.01]).
+    * clim_maxmin : list, optional
+        * Color limits for the max/min spatial fields (default is [-5, 5]).
+    * cmap : str, optional
+        * Colormap to use for all plots (default is 'RdBu_r').
+    * pat_norm_mode : str, optional
+        * Normalization mode for EOF patterns; options are 'none', 'log', or 'symlog' (default is 'none').
+    * maxmin_norm_mode : str, optional
+        * Normalization mode for max/min fields; options are 'none', 'log', or 'symlog' (default is 'none').
+    * timeseries_type : str, optional
+        * Type of time series plot: 'line' for a simple line plot or 'enhanced_bars' for a vertical bar chart with color-coded bars.
+        * Default is 'line'.
 
     Returns
     -------
@@ -153,17 +152,17 @@ import pandas as pd
 def plot_n_clustering_experiment_feature_report(features):
     """
     Generates a clustering experiment feature report that includes:
-      - A printed table of cluster features.
-      - A grid of histograms for each cluster feature.
-      - A scatterplot matrix of cluster features.
+    * A printed table of cluster features.
+    * A grid of histograms for each cluster feature.
+    * A scatterplot matrix of cluster features.
 
     The function prints the feature table and then calls helper functions to plot the histograms 
     and scatterplot matrix using the cluster features stored in a dictionary.
 
     Parameters
     ----------
-    features : dict
-        Dictionary containing cluster features, where keys are cluster IDs (as int) and values are dictionaries
+    * features : dict
+        * Dictionary containing cluster features, where keys are cluster IDs (as int) and values are dictionaries
         mapping feature names to computed feature values.
 
     Returns

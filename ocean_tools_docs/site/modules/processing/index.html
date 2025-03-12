@@ -201,17 +201,14 @@
     <div class="doc doc-contents ">
 
         <p>Prepares a dataset for analysis by masking out non-ocean areas and, optionally,
-computing deseasonalized anomalies with additional transformations.</p>
-
-
-<details class="the-function-performs-the-following-steps" open>
-  <summary>The function performs the following steps</summary>
-  <ol>
+ computing deseasonalized anomalies with additional transformations.</p>
+<ul>
+<li>The function performs the following steps:<ul>
 <li>Generates an ocean mask by plotting the dataset extent using Cartopy,
-   drawing land features, and extracting a binary mask from the figure's RGBA buffer.</li>
+     drawing land features, and extracting a binary mask from the figure's RGBA buffer.</li>
 <li>Applies the mask to the specified variable, setting values outside the ocean to NaN.</li>
 <li>If use_anomalies is True, computes deseasonalized anomalies by subtracting the
-   monthly mean from each time step, and then applies a transformation based on anomaly_transform:<ul>
+     monthly mean from each time step, and then applies a transformation based on anomaly_transform:<ul>
 <li>'positive': keeps only positive anomaly values.</li>
 <li>'negative': keeps only negative anomaly values.</li>
 <li>'square': squares the anomaly values.</li>
@@ -219,21 +216,39 @@ computing deseasonalized anomalies with additional transformations.</p>
 <li>'none': no further transformation is applied.</li>
 </ul>
 </li>
-</ol>
-</details>        <h5 id="ocean_tools.processing.data_prep.prepare_dataset_for_analysis--parameters">Parameters</h5>
-<p>ds : xr.Dataset
-    The input dataset containing the variable and coordinates (time, lat, lon).
-variable_name : str
-    The name of the variable to process (e.g., 'sst' or 'chlor_a').
-use_anomalies : bool, optional
-    If True, computes the deseasonalized anomaly for the variable. Default is False.
-anomaly_transform : str, optional
-    Transformation to apply on the anomaly:
-      'positive', 'negative', 'square', 'abs', or 'none'. Default is 'none'.</p>
-<h5 id="ocean_tools.processing.data_prep.prepare_dataset_for_analysis--returns">Returns</h5>
-<p>xr.Dataset
-    The processed dataset with non-ocean values masked out and, if requested,
-    the variable replaced with its deseasonalized (and transformed) anomaly.</p>
+</ul>
+</li>
+</ul>
+<p>Parameters</p>
+<hr />
+<ul>
+<li>ds : xr.Dataset<ul>
+<li>The input dataset containing the variable and coordinates (time, lat, lon).</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>The name of the variable to process (e.g., 'sst' or 'chlor_a').</li>
+</ul>
+</li>
+<li>use_anomalies : bool, optional<ul>
+<li>If True, computes the deseasonalized anomaly for the variable. Default is False.</li>
+</ul>
+</li>
+<li>anomaly_transform : str, optional<ul>
+<li>Transformation to apply on the anomaly:
+   'positive', 'negative', 'square', 'abs', or 'none'. Default is 'none'.</li>
+</ul>
+</li>
+</ul>
+<p>Returns</p>
+<hr />
+<ul>
+<li>xr.Dataset<ul>
+<li>The processed dataset with non-ocean values masked out and, if requested,
+ the variable replaced with its deseasonalized (and transformed) anomaly.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -252,27 +267,49 @@ anomaly_transform : str, optional
     <div class="doc doc-contents ">
 
         <p>Aggregates a variable in a dataset over time according to a specified mode.</p>
-<p>Depending on the mode, the function returns:
-  - 'full': A single xarray.DataArray with the aggregation over the entire time dimension.
-  - 'seasonal': A dictionary with keys 'winter', 'spring', 'summer', and 'autumn', each containing an xarray.DataArray aggregated over the respective months.
-  - 'monthly': A dictionary with keys 1 to 12 (months) and corresponding xarray.DataArrays.</p>
+<ul>
+<li>Depending on the mode, the function returns:<ul>
+<li>'full': A single xarray.DataArray with the aggregation over the entire time dimension.</li>
+<li>'seasonal': A dictionary with keys 'winter', 'spring', 'summer', and 'autumn', each containing an xarray.DataArray aggregated over the respective months.</li>
+<li>'monthly': A dictionary with keys 1 to 12 (months) and corresponding xarray.DataArrays.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.data_prep.time_aggregator--parameters">Parameters</h5>
-<p>ds : xr.Dataset
-    The input dataset containing the variable and a time coordinate.
-variable_name : str
-    The name of the variable to aggregate.
-mode : str, optional
-    Aggregation mode: 'full', 'seasonal', or 'monthly'. Default is 'full'.
-agg_type : str, optional
-    Type of aggregation (e.g., 'mean', 'std') supported by xarray methods. Default is 'mean'.</p>
+<ul>
+<li>ds : xr.Dataset<ul>
+<li>The input dataset containing the variable and a time coordinate.</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>The name of the variable to aggregate.</li>
+</ul>
+</li>
+<li>mode : str, optional<ul>
+<li>Aggregation mode: 'full', 'seasonal', or 'monthly'. Default is 'full'.</li>
+</ul>
+</li>
+<li>gg_type : str, optional<ul>
+<li>Type of aggregation (e.g., 'mean', 'std') supported by xarray methods. Default is 'mean'.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.data_prep.time_aggregator--returns">Returns</h5>
-<p>xr.DataArray or dict
-    If mode is 'full', returns an xarray.DataArray with the aggregated variable.
-    If mode is 'seasonal' or 'monthly', returns a dictionary mapping the period (season or month)
-    to the corresponding xarray.DataArray.</p>
+<ul>
+<li>xr.DataArray or dict<ul>
+<li>If mode is 'full', returns an xarray.DataArray with the aggregated variable.</li>
+<li>If mode is 'seasonal' or 'monthly', returns a dictionary mapping the period (season or month)
+to the corresponding xarray.DataArray.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.data_prep.time_aggregator--raises">Raises</h5>
-<p>ValueError
-    If the specified aggregation type is not supported or if the mode is unrecognized.</p>
+<ul>
+<li>ValueError<ul>
+<li>If the specified aggregation type is not supported or if the mode is unrecognized.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -333,13 +370,23 @@ agg_type : str, optional
 time steps corresponding to that month. Then, for every time step in the dataset, it subtracts 
 the mean value of the corresponding month, effectively removing the seasonal cycle.</p>
 <h5 id="ocean_tools.processing.anomalies.get_deseasonalized_anomaly_ds--parameters">Parameters</h5>
-<p>ds : xr.Dataset
-    Input dataset with at least 'time' and spatial dimensions (e.g., 'lat' and 'lon').
-variable_name : str
-    Name of the variable (e.g., 'sst') for which the deseasonalized anomaly is to be computed.</p>
+<ul>
+<li>ds : xr.Dataset<ul>
+<li>Input dataset with at least 'time' and spatial dimensions (e.g., 'lat' and 'lon').</li>
+</ul>
+</li>
+<li>Variable_name : str<ul>
+<li>Name of the variable (e.g., 'sst') for which the deseasonalized anomaly is to be computed.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.anomalies.get_deseasonalized_anomaly_ds--returns">Returns</h5>
-<p>xr.Dataset
-    The input dataset with the specified variable updated to represent its deseasonalized anomaly.</p>
+<ul>
+<li>xr.Dataset<ul>
+<li>The input dataset with the specified variable updated to represent its deseasonalized anomaly.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -401,20 +448,36 @@ and retains only the specified variable.</p>
 <p>The file name is expected to contain a date in the format where the date appears after the first dot
 and consists of eight digits (YYYYMMDD). This date is used to set the 'time' coordinate of the dataset.</p>
 <h5 id="ocean_tools.processing.merges.merge_variable_days_preprocess--parameters">Parameters</h5>
-<p>dataset_dir : str
-    The directory where the NetCDF file is located.
-file : str
-    The name of the NetCDF file.
-lat : list or tuple of float
-    A list or tuple containing the minimum and maximum latitudes [min_lat, max_lat] for filtering.
-lon : list or tuple of float
-    A list or tuple containing the minimum and maximum longitudes [min_lon, max_lon] for filtering.
-variable_name : str
-    The name of the variable to retain in the dataset.</p>
+<ul>
+<li>dataset_dir : str<ul>
+<li>The directory where the NetCDF file is located.</li>
+</ul>
+</li>
+<li>file : str<ul>
+<li>The name of the NetCDF file.</li>
+</ul>
+</li>
+<li>lat : list or tuple of float<ul>
+<li>A list or tuple containing the minimum and maximum latitudes [min_lat, max_lat] for filtering.</li>
+</ul>
+</li>
+<li>lon : list or tuple of float<ul>
+<li>A list or tuple containing the minimum and maximum longitudes [min_lon, max_lon] for filtering.</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>The name of the variable to retain in the dataset.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.merges.merge_variable_days_preprocess--returns">Returns</h5>
-<p>xr.Dataset
-    An xarray Dataset containing only the specified variable, with the 'time' dimension expanded 
-    (and set to a single date extracted from the file name) and filtered to the specified geographic region.</p>
+<ul>
+<li>xr.Dataset<ul>
+<li>An xarray Dataset containing only the specified variable, with the 'time' dimension expanded 
+(and set to a single date extracted from the file name) and filtered to the specified geographic region.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -472,34 +535,60 @@ variable_name : str
     <div class="doc doc-contents ">
 
         <p>Calculates regression slopes for a dataset based on the specified temporal mode.</p>
-<p>Depending on the mode, this function computes:
-  - 'full': A single 2D spatial array of slopes computed over the entire time series.
-  - 'seasonal': A dictionary with keys ('winter', 'spring', 'summer', 'autumn'), each containing a 2D
-                spatial array of slopes computed over the corresponding season.
-  - 'monthly': A dictionary with keys 1 to 12, each containing a 2D spatial array of slopes computed
-               for the corresponding month.</p>
+<ul>
+<li>Depending on the mode, this function computes:<ul>
+<li>'full': A single 2D spatial array of slopes computed over the entire time series.</li>
+<li>'seasonal': A dictionary with keys ('winter', 'spring', 'summer', 'autumn'), each containing a 2D
+            spatial array of slopes computed over the corresponding season.</li>
+<li>'monthly': A dictionary with keys 1 to 12, each containing a 2D spatial array of slopes computed
+           for the corresponding month.</li>
+</ul>
+</li>
+</ul>
 <p>Optionally, the computed slopes are saved to NetCDF files.</p>
 <h5 id="ocean_tools.processing.regression.get_regression_slopes--parameters">Parameters</h5>
-<p>ds : xr.Dataset
-    Input dataset containing the variable and coordinates (time, lat, lon).
-variable_name : str
-    The name of the variable to process (e.g., 'sst').
-mode : str, optional
-    Temporal mode of computation: 'full', 'seasonal', or 'monthly'. Default is 'full'.
-step_name : str, optional
-    Label used for progress display. Default is "Step".
-store : bool, optional
-    If True, the computed slopes are saved as NetCDF files. Default is False.
-store_dir : str, optional
-    Directory where the NetCDF files will be stored if store is True.
-file_name : str, optional
-    Base file name for the stored NetCDF files if store is True.</p>
+<ul>
+<li>ds : xr.Dataset<ul>
+<li>Input dataset containing the variable and coordinates (time, lat, lon).</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>The name of the variable to process (e.g., 'sst').</li>
+</ul>
+</li>
+<li>mode : str, optional<ul>
+<li>Temporal mode of computation: 'full', 'seasonal', or 'monthly'. Default is 'full'.</li>
+</ul>
+</li>
+<li>step_name : str, optional<ul>
+<li>Label used for progress display. Default is "Step".</li>
+</ul>
+</li>
+<li>store : bool, optional<ul>
+<li>If True, the computed slopes are saved as NetCDF files. Default is False.</li>
+</ul>
+</li>
+<li>store_dir : str, optional<ul>
+<li>Directory where the NetCDF files will be stored if store is True.</li>
+</ul>
+</li>
+<li>file_name : str, optional<ul>
+<li>Base file name for the stored NetCDF files if store is True.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.regression.get_regression_slopes--returns">Returns</h5>
-<p>xr.DataArray or dict
-    If mode is 'full', returns an xarray.DataArray with slopes.
-    If mode is 'seasonal' or 'monthly', returns a dictionary mapping season/month to xarray.DataArray of slopes.
-dict
-    A dictionary of additional information (e.g., number of clusters may be added in future versions).</p>
+<ul>
+<li>xr.DataArray or dict<ul>
+<li>If mode is 'full', returns an xarray.DataArray with slopes.</li>
+<li>If mode is 'seasonal' or 'monthly', returns a dictionary mapping season/month to xarray.DataArray of slopes.</li>
+</ul>
+</li>
+<li>dict<ul>
+<li>A dictionary of additional information (e.g., number of clusters may be added in future versions).</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -522,15 +611,27 @@ dict
 (converted to an integer type) as the independent variable and the variable values as the dependent variable.
 It returns a 2D numpy array of slopes with the same spatial dimensions as the dataset.</p>
 <h5 id="ocean_tools.processing.regression.raster_series_regression_2d_slopes--parameters">Parameters</h5>
-<p>ds : xr.Dataset
-    Input dataset that contains the variable as well as 'time', 'lat', and 'lon' coordinates.
-variable_name : str
-    The name of the variable on which to perform the regression (e.g., 'sst').
-step_name : str, optional
-    A label used to display progress during computation. Default is "Step".</p>
+<ul>
+<li>ds : xr.Dataset<ul>
+<li>Input dataset that contains the variable as well as 'time', 'lat', and 'lon' coordinates.</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>The name of the variable on which to perform the regression (e.g., 'sst').</li>
+</ul>
+</li>
+<li>step_name : str, optional<ul>
+<li>A label used to display progress during computation. Default is "Step".</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.regression.raster_series_regression_2d_slopes--returns">Returns</h5>
-<p>np.ndarray
-    2D numpy array of slopes with shape (len(lat), len(lon)).</p>
+<ul>
+<li>np.ndarray<ul>
+<li>2D numpy array of slopes with shape (len(lat), len(lon)).</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -592,21 +693,39 @@ step_name : str, optional
 from a 2D array of anomalies with shape (time, lat*lon). It returns the explained variance and the EOFs
 (principal components) as a tuple. Optionally, the results can be stored as pickle files.</p>
 <h5 id="ocean_tools.processing.pca.EOF_anomalies_analysis--parameters">Parameters</h5>
-<p>anom_prep : np.ndarray
-    2D array of anomalies with shape (time, lat*lon), normalized (zero mean, unit std).
-n_components : int
-    Number of principal components to compute.
-store : bool, optional
-    If True, the results (explained variance and EOFs) are saved to disk. Default is False.
-store_dir : str, optional
-    Directory where the results will be stored if store is True.
-file_name : str, optional
-    Base name for the stored files if store is True.</p>
+<ul>
+<li>anom_prep : np.ndarray<ul>
+<li>2D array of anomalies with shape (time, lat*lon), normalized (zero mean, unit std).</li>
+</ul>
+</li>
+<li>n_components : int<ul>
+<li>Number of principal components to compute.</li>
+</ul>
+</li>
+<li>store : bool, optional<ul>
+<li>If True, the results (explained variance and EOFs) are saved to disk. Default is False.</li>
+</ul>
+</li>
+<li>store_dir : str, optional<ul>
+<li>Directory where the results will be stored if store is True.</li>
+</ul>
+</li>
+<li>file_name : str, optional<ul>
+<li>Base name for the stored files if store is True.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.pca.EOF_anomalies_analysis--returns">Returns</h5>
-<p>tuple
-    A tuple (LAM, E) where:
-      - LAM is a numpy.ndarray containing the explained variance of each component.
-      - E is a numpy.ndarray of EOFs with shape (lat*lon, n_components).</p>
+<ul>
+<li>tuple<ul>
+<li>A tuple (LAM, E) where:<ul>
+<li>LAM is a numpy.ndarray containing the explained variance of each component.</li>
+<li>E is a numpy.ndarray of EOFs with shape (lat*lon, n_components).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -629,19 +748,33 @@ file_name : str, optional
 values, retrieves the corresponding dates from ds_anom, and extracts the patterns (fields) corresponding 
 to those dates.</p>
 <h5 id="ocean_tools.processing.pca.get_pattern_ts_max_min--parameters">Parameters</h5>
-<p>ds_anom : xr.Dataset
-    Dataset containing the variable and the time coordinate.
-time_series : list
-    List of 1D numpy arrays representing temporal series (PCs) for each EOF.
-variable_name : str
-    Name of the variable in ds_anom.
-verbose : bool, optional
-    If True, prints the dates corresponding to the maximum and minimum values for each EOF.
-    Default is False.</p>
+<ul>
+<li>ds_anom : xr.Dataset<ul>
+<li>Dataset containing the variable and the time coordinate.</li>
+</ul>
+</li>
+<li>time_series : list<ul>
+<li>List of 1D numpy arrays representing temporal series (PCs) for each EOF.</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>Name of the variable in ds_anom.</li>
+</ul>
+</li>
+<li>verbose : bool, optional<ul>
+<li>If True, prints the dates corresponding to the maximum and minimum values for each EOF.
+Default is False.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.pca.get_pattern_ts_max_min--returns">Returns</h5>
-<p>list
-    A list of lists, where each inner list contains two elements: [max_pattern, min_pattern],
-    corresponding to the patterns (fields) on the dates of maximum and minimum values.</p>
+<ul>
+<li>list<ul>
+<li>A list of lists, where each inner list contains two elements: [max_pattern, min_pattern],
+corresponding to the patterns (fields) on the dates of maximum and minimum values.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -664,21 +797,39 @@ verbose : bool, optional
 representing the spatial pattern and computes the corresponding time series (PC) by projecting the 
 preprocessed anomaly data onto the EOF. The time series is normalized (zero mean, unit std).</p>
 <h5 id="ocean_tools.processing.pca.get_patterns_and_ts--parameters">Parameters</h5>
-<p>E : np.ndarray
-    EOFs (principal components) from PCA with shape (lat<em>lon, n_components).
-n_patterns : int
-    Number of patterns (EOFs) to extract.
-nlat : int
-    Number of latitude points.
-nlon : int
-    Number of longitude points.
-anom_prep_var : np.ndarray
-    The 2D anomaly array (time, lat</em>lon) used for PCA.</p>
+<ul>
+<li>E : np.ndarray<ul>
+<li>EOFs (principal components) from PCA with shape (lat*lon, n_components).</li>
+</ul>
+</li>
+<li>n_patterns : int<ul>
+<li>Number of patterns (EOFs) to extract.</li>
+</ul>
+</li>
+<li>nlat : int<ul>
+<li>Number of latitude points.</li>
+</ul>
+</li>
+<li>nlon : int<ul>
+<li>Number of longitude points.</li>
+</ul>
+</li>
+<li>anom_prep_var : np.ndarray<ul>
+<li>The 2D anomaly array (time, lat*lon) used for PCA.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.pca.get_patterns_and_ts--returns">Returns</h5>
-<p>tuple
-    A tuple (patterns, time_series) where:
-      - patterns is a list of 2D arrays (each of shape (nlat, nlon)) representing spatial patterns.
-      - time_series is a list of 1D arrays representing the corresponding temporal series (PCs).</p>
+<ul>
+<li>tuple<ul>
+<li>A tuple (patterns, time_series) where:<ul>
+<li>patterns is a list of 2D arrays (each of shape (nlat, nlon)) representing spatial patterns.</li>
+<li>time_series is a list of 1D arrays representing the corresponding temporal series (PCs).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -700,14 +851,24 @@ anom_prep_var : np.ndarray
 <p>The function displays a line plot of the normalized explained variance with error bars
 computed according to North's rule of thumb.</p>
 <h5 id="ocean_tools.processing.pca.plot_eigenvalues_explained_variance--parameters">Parameters</h5>
-<p>LAM : np.ndarray
-    Array of explained variances from the PCA.
-E : np.ndarray
-    Array of principal components (EOFs) with shape (lat*lon, n_components).
-n_components : int
-    Number of components to plot.
-title : str, optional
-    Title for the plot. Default is 'Fraction of Variance Explained'.</p>
+<ul>
+<li>LAM : np.ndarray<ul>
+<li>Array of explained variances from the PCA.</li>
+</ul>
+</li>
+<li>E : np.ndarray<ul>
+<li>Array of principal components (EOFs) with shape (lat*lon, n_components).</li>
+</ul>
+</li>
+<li>n_components : int<ul>
+<li>Number of components to plot.</li>
+</ul>
+</li>
+<li>title : str, optional<ul>
+<li>Title for the plot. Default is 'Fraction of Variance Explained'.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.pca.plot_eigenvalues_explained_variance--returns">Returns</h5>
 <p>None</p>
 
@@ -732,13 +893,23 @@ title : str, optional
 into a 2D array of shape (time, lat*lon) after normalizing the data to have zero mean and unit standard deviation.
 Any NaN values are replaced with 0.</p>
 <h5 id="ocean_tools.processing.pca.prep_for_PCA--parameters">Parameters</h5>
-<p>ds : xarray.Dataset
-    Dataset containing the variable.
-variable_name : str
-    Name of the variable to process.</p>
+<ul>
+<li>ds : xarray.Dataset<ul>
+<li>Dataset containing the variable.</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>Name of the variable to process.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.pca.prep_for_PCA--returns">Returns</h5>
-<p>np.ndarray
-    2D numpy array with shape (time, lat*lon) containing the normalized data.</p>
+<ul>
+<li>np.ndarray<ul>
+<li>2D numpy array with shape (time, lat*lon) containing the normalized data.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -807,16 +978,28 @@ clustering quality metrics.</p>
 extracts each cluster as a binary mask, and applies each transformation from the cluster_extractor 
 dictionary to compute cluster features. The resulting features for each cluster are stored in a dictionary.</p>
 <h5 id="ocean_tools.processing.clustering.calculate_features_from_extractors--parameters">Parameters</h5>
-<p>clusters : xr.DataArray
-    A labeled clustering result with dimensions (time, lat, lon). Valid clusters have positive integer labels.
-cluster_extractor : dict
-    A dictionary of lambda functions mapping feature names to functions that take a numpy array 
-    (extracted from a cluster) and return a feature value.
-experiment_name : str, optional
-    An optional name for the experiment, used for logging purposes.</p>
+<ul>
+<li>clusters : xr.DataArray<ul>
+<li>A labeled clustering result with dimensions (time, lat, lon). Valid clusters have positive integer labels.</li>
+</ul>
+</li>
+<li>cluster_extractor : dict<ul>
+<li>A dictionary of lambda functions mapping feature names to functions that take a numpy array 
+(extracted from a cluster) and return a feature value.</li>
+</ul>
+</li>
+<li>experiment_name : str, optional<ul>
+<li>An optional name for the experiment, used for logging purposes.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.clustering.calculate_features_from_extractors--returns">Returns</h5>
-<p>dict
-    A dictionary mapping cluster IDs (as int) to dictionaries of computed features.</p>
+<ul>
+<li>dict<ul>
+<li>A dictionary mapping cluster IDs (as int) to dictionaries of computed features.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -840,17 +1023,27 @@ constructs a feature matrix from their indices (time, lat, lon), and computes th
 Davies-Bouldin index, and Calinski-Harabasz index. It also calculates the noise ratio as the 
 proportion of points labeled as noise (-1).</p>
 <h5 id="ocean_tools.processing.clustering.compute_clustering_metrics--parameters">Parameters</h5>
-<p>clusters_xr : xr.DataArray
-    Clustering output with dimensions (time, lat, lon). Valid points have positive integer labels,
-    noise points are labeled -1, and missing data are NaN.</p>
+<ul>
+<li>clusters_xr : xr.DataArray<ul>
+<li>Clustering output with dimensions (time, lat, lon). Valid points have positive integer labels,
+noise points are labeled -1, and missing data are NaN.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.clustering.compute_clustering_metrics--returns">Returns</h5>
-<p>dict
-    A dictionary containing the following keys:
-      - 'silhouette': Silhouette score (higher is better). It measures the separation distance between the resulting clusters.
-      - 'davies_bouldin': Davies-Bouldin index (lower is better). It measures the average similarity between each cluster and its most similar one.
-      - 'calinski_harabasz': Calinski-Harabasz index (higher is better). It measures the ratio of the sum of between-cluster dispersion to within-cluster dispersion.
-      - 'noise_ratio': Proportion of unclustered points (lower is better). It measures the amount of noise in the clustering result.
-      If metrics are not computable (e.g., fewer than 2 clusters), their values will be np.nan.</p>
+<ul>
+<li>dict<ul>
+<li>A dictionary containing the following keys:<ul>
+<li>'silhouette': Silhouette score (higher is better).</li>
+<li>'davies_bouldin': Davies-Bouldin index (lower is better)</li>
+<li>'calinski_harabasz': Calinski-Harabasz index (higher is better).</li>
+<li>'noise_ratio': Proportion of unclustered points (lower is better).</li>
+</ul>
+</li>
+<li>If metrics are not computable (e.g., fewer than 2 clusters), their values will be np.nan.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -873,14 +1066,24 @@ proportion of points labeled as noise (-1).</p>
 minimum, and maximum across all clusters, and returns these as a dictionary along with the experiment
 name, file name, and total number of clusters.</p>
 <h5 id="ocean_tools.processing.clustering.extract_experiment_aggregated_features--parameters">Parameters</h5>
-<p>exp_feature : dict
-    Dictionary with keys:
-      - 'experiment_name': Name of the experiment.
-      - 'file_name': File name associated with the experiment.
-      - 'features': Dictionary mapping cluster IDs to dictionaries of cluster features.</p>
+<ul>
+<li>exp_feature : dict<ul>
+<li>Dictionary with keys:<ul>
+<li>'experiment_name': Name of the experiment.</li>
+<li>'file_name': File name associated with the experiment.</li>
+<li>'features': Dictionary mapping cluster IDs to dictionaries of cluster features.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.clustering.extract_experiment_aggregated_features--returns">Returns</h5>
-<p>dict
-    A dictionary containing aggregated experiment-level features.</p>
+<ul>
+<li>dict<ul>
+<li>A dictionary containing aggregated experiment-level features.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -904,21 +1107,39 @@ name, file name, and total number of clusters.</p>
 component (cluster) that meets the min_cluster_size requirement; clusters smaller than this 
 threshold are marked as noise (label 0).</p>
 <h5 id="ocean_tools.processing.clustering.label_connected_components--parameters">Parameters</h5>
-<p>ds_segmented : xr.DataArray
-    A segmentation mask (with values 1 for relevant anomalies and np.nan for others) with dimensions (time, lat, lon).
-eps_time : int, optional
-    Maximum index difference in the time dimension for neighbor connectivity. Default is 1.
-eps_lat : int, optional
-    Maximum index difference in the latitude dimension for neighbor connectivity. Default is 1.
-eps_lon : int, optional
-    Maximum index difference in the longitude dimension for neighbor connectivity. Default is 1.
-min_cluster_size : int, optional
-    Minimum number of points required for a cluster to be retained. Clusters smaller than this are labeled as noise (0). Default is 5.</p>
+<ul>
+<li>ds_segmented : xr.DataArray<ul>
+<li>A segmentation mask (with values 1 for relevant anomalies and np.nan for others) with dimensions (time, lat, lon).</li>
+</ul>
+</li>
+<li>eps_time : int, optional<ul>
+<li>Maximum index difference in the time dimension for neighbor connectivity. Default is 1.</li>
+</ul>
+</li>
+<li>eps_lat : int, optional<ul>
+<li>Maximum index difference in the latitude dimension for neighbor connectivity. Default is 1.</li>
+</ul>
+</li>
+<li>eps_lon : int, optional<ul>
+<li>Maximum index difference in the longitude dimension for neighbor connectivity. Default is 1.</li>
+</ul>
+</li>
+<li>min_cluster_size : int, optional<ul>
+<li>Minimum number of points required for a cluster to be retained. Clusters smaller than this are labeled as noise (0). Default is 5.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.clustering.label_connected_components--returns">Returns</h5>
-<p>ds_labels : xr.DataArray
-    A DataArray of the same shape and coordinates as ds_segmented, with each cluster assigned a unique positive integer label and noise points labeled as 0.
-n_clusters : int
-    The number of clusters that meet the min_cluster_size requirement.</p>
+<ul>
+<li>ds_labels : xr.DataArray<ul>
+<li>A DataArray of the same shape and coordinates as ds_segmented, with each cluster assigned a unique positive integer label and noise points labeled as 0.</li>
+</ul>
+</li>
+<li>n_clusters : int<ul>
+<li>The number of clusters that meet the min_cluster_size requirement.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -942,25 +1163,47 @@ A point is considered a core point if its spatiotemporal neighborhood (defined b
 contains at least min_neighbors points. The algorithm then expands the cluster via these core points.
 After cluster expansion, if the total number of points in the cluster is below min_cluster_size, the cluster is discarded (labeled as noise, -1).</p>
 <h5 id="ocean_tools.processing.clustering.label_connected_components_dbscan--parameters">Parameters</h5>
-<p>ds_segmented : xr.DataArray
-    Segmentation mask with dimensions (time, lat, lon) where relevant points have value 1 and non-relevant or missing values are 0 or np.nan.
-eps_time : int, optional
-    Maximum index difference in the time dimension for neighbor search. Default is 1.
-eps_lat : int, optional
-    Maximum index difference in the latitude dimension for neighbor search. Default is 1.
-eps_lon : int, optional
-    Maximum index difference in the longitude dimension for neighbor search. Default is 1.
-min_neighbors : int, optional
-    Minimum number of points (including the point itself) required for a point to be a core point. Default is 5.
-min_cluster_size : int, optional
-    Minimum number of points required for a cluster to be retained. Clusters smaller than this will be labeled as noise (-1). Default is 0.</p>
+<ul>
+<li>ds_segmented : xr.DataArray<ul>
+<li>Segmentation mask with dimensions (time, lat, lon) where relevant points have value 1 and non-relevant or missing values are 0 or np.nan.</li>
+</ul>
+</li>
+<li>eps_time : int, optional<ul>
+<li>Maximum index difference in the time dimension for neighbor search. Default is 1.</li>
+</ul>
+</li>
+<li>eps_lat : int, optional<ul>
+<li>Maximum index difference in the latitude dimension for neighbor search. Default is 1.</li>
+</ul>
+</li>
+<li>eps_lon : int, optional<ul>
+<li>Maximum index difference in the longitude dimension for neighbor search. Default is 1.</li>
+</ul>
+</li>
+<li>min_neighbors : int, optional<ul>
+<li>Minimum number of points (including the point itself) required for a point to be a core point. Default is 5.</li>
+</ul>
+</li>
+<li>min_cluster_size : int, optional<ul>
+<li>Minimum number of points required for a cluster to be retained. Clusters smaller than this will be labeled as noise (-1). Default is 0.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.clustering.label_connected_components_dbscan--returns">Returns</h5>
-<p>ds_labels : xr.DataArray
-    A DataArray with the same dimensions as ds_segmented, where each valid cluster is assigned a unique positive integer label and noise points are labeled as -1.
-n_clusters : int
-    The number of clusters that meet the min_cluster_size requirement.
-n_discarded : int
-    The number of clusters discarded due to being smaller than min_cluster_size.</p>
+<ul>
+<li>ds_labels : xr.DataArray<ul>
+<li>A DataArray with the same dimensions as ds_segmented, where each valid cluster is assigned a unique positive integer label and noise points are labeled as -1.</li>
+</ul>
+</li>
+<li>n_clusters : int<ul>
+<li>The number of clusters that meet the min_cluster_size requirement.</li>
+</ul>
+</li>
+<li>n_discarded : int<ul>
+<li>The number of clusters discarded due to being smaller than min_cluster_size.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -982,16 +1225,28 @@ n_discarded : int
 <p>For each grid point, if the absolute value of the specified variable is greater than or equal 
 to the anomaly_threshold and is not null, it is labeled as 1; otherwise, it is set to np.nan.</p>
 <h5 id="ocean_tools.processing.clustering.segment_anomalies--parameters">Parameters</h5>
-<p>ds_anom : xr.Dataset
-    Input dataset containing the variable to be segmented (with dimensions like time, lat, lon).
-variable_name : str
-    Name of the variable to use for segmentation (e.g., 'sst' or 'chlor_a').
-anomaly_threshold : float
-    Threshold value for determining a relevant anomaly.</p>
+<ul>
+<li>ds_anom : xr.Dataset<ul>
+<li>Input dataset containing the variable to be segmented (with dimensions like time, lat, lon).</li>
+</ul>
+</li>
+<li>variable_name : str<ul>
+<li>Name of the variable to use for segmentation (e.g., 'sst' or 'chlor_a').</li>
+</ul>
+</li>
+<li>anomaly_threshold : float<ul>
+<li>Threshold value for determining a relevant anomaly.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.clustering.segment_anomalies--returns">Returns</h5>
-<p>xr.DataArray
-    A segmentation mask (DataArray) with the same dimensions as ds_anom[variable_name],
-    where relevant grid points are 1 and non-relevant ones are np.nan.</p>
+<ul>
+<li>xr.DataArray<ul>
+<li>A segmentation mask (DataArray) with the same dimensions as ds_anom[variable_name],
+where relevant grid points are 1 and non-relevant ones are np.nan.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -1015,18 +1270,32 @@ exceeding the corresponding anomaly threshold are marked as 1 (and others as np.
 masks are then combined element-wise using either an "and" (intersection) or "or" (union) logic. 
 The final segmentation mask has the same shape, coordinates, and dimensions as the first dataset's variable.</p>
 <h5 id="ocean_tools.processing.clustering.segment_n_variable_anomalies--parameters">Parameters</h5>
-<p>ds_anom_list : list of xr.Dataset or xr.DataArray
-    List of datasets (or DataArrays) containing the variables to process. Each is assumed to have dimensions (time, lat, lon).
-var_name_list : list of str
-    List of variable names corresponding to each dataset in ds_anom_list.
-anomaly_threshold_list : list of float
-    List of anomaly thresholds for each dataset.
-union_type : str, optional
-    Logic for combining masks: 'and' to require all datasets to exceed thresholds, 'or' to allow any.
-    Default is 'and'.</p>
+<ul>
+<li>ds_anom_list : list of xr.Dataset or xr.DataArray<ul>
+<li>List of datasets (or DataArrays) containing the variables to process. Each is assumed to have dimensions (time, lat, lon).</li>
+</ul>
+</li>
+<li>var_name_list : list of str<ul>
+<li>List of variable names corresponding to each dataset in ds_anom_list.</li>
+</ul>
+</li>
+<li>anomaly_threshold_list : list of float<ul>
+<li>List of anomaly thresholds for each dataset.</li>
+</ul>
+</li>
+<li>union_type : str, optional<ul>
+<li>Logic for combining masks: 'and' to require all datasets to exceed thresholds, 'or' to allow any.
+Default is 'and'.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.clustering.segment_n_variable_anomalies--returns">Returns</h5>
-<p>xr.DataArray
-    A combined segmentation mask with values 1 where the union criteria are met, np.nan otherwise.</p>
+<ul>
+<li>xr.DataArray<ul>
+<li>A combined segmentation mask with values 1 where the union criteria are met, np.nan otherwise.</li>
+</ul>
+</li>
+</ul>
 
 
     </div>
@@ -1088,24 +1357,40 @@ union_type : str, optional
 of equal length, where each element is a numpy array representing a spatial dataset.
 The difference is computed pairwise for each corresponding element in ds1_array and ds2_array.</p>
 <h5 id="ocean_tools.processing.differences.perform_difference_analysis--parameters">Parameters</h5>
-<p>ds1_array : list
-    A list of numpy arrays representing the first set of data (e.g., historic data).
-ds2_array : list
-    A list of numpy arrays representing the second set of data (e.g., recent data).
-output_type : str, optional
-    The type of difference to compute. Options are:
-      - 'total': returns the element-wise difference for each array (e.g., a 2D map),
-      - 'latitudinal': returns the difference of the mean values along axis 1 (resulting in a 1D latitudinal profile),
-      - 'longitudinal': returns the difference of the mean values along axis 0 (resulting in a 1D longitudinal profile),
-      - 'total_average': returns a scalar representing the overall average difference.
-    Default is 'total'.</p>
+<ul>
+<li>ds1_array : list<ul>
+<li>A list of numpy arrays representing the first set of data (e.g., historic data).</li>
+</ul>
+</li>
+<li>ds2_array : list<ul>
+<li>A list of numpy arrays representing the second set of data (e.g., recent data).</li>
+</ul>
+</li>
+<li>output_type : str, optional<ul>
+<li>The type of difference to compute. Options are:<ul>
+<li>'total': returns the element-wise difference for each array (e.g., a 2D map),</li>
+<li>'latitudinal': returns the difference of the mean values along axis 1 (resulting in a 1D latitudinal profile),</li>
+<li>'longitudinal': returns the difference of the mean values along axis 0 (resulting in a 1D longitudinal profile),</li>
+<li>'total_average': returns a scalar representing the overall average difference.</li>
+</ul>
+</li>
+<li>Default is 'total'.</li>
+</ul>
+</li>
+</ul>
 <h5 id="ocean_tools.processing.differences.perform_difference_analysis--returns">Returns</h5>
-<p>list
-    A list of differences computed for each pair of arrays from ds1_array and ds2_array.
-    The content of each element depends on the output_type:
-      - For 'total': each element is a numpy array (same shape as input arrays).
-      - For 'latitudinal' and 'longitudinal': each element is a 1D numpy array.
-      - For 'total_average': each element is a scalar.</p>
+<ul>
+<li>list<ul>
+<li>A list of differences computed for each pair of arrays from ds1_array and ds2_array.</li>
+<li>The content of each element depends on the output_type:<ul>
+<li>For 'total': each element is a numpy array (same shape as input arrays).</li>
+<li>For 'latitudinal' and 'longitudinal': each element is a 1D numpy array.</li>
+<li>For 'total_average': each element is a scalar.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 
     </div>

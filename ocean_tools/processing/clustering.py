@@ -21,17 +21,17 @@ def segment_anomalies(ds_anom, variable_name, anomaly_threshold):
 
     Parameters
     ----------
-    ds_anom : xr.Dataset
-        Input dataset containing the variable to be segmented (with dimensions like time, lat, lon).
-    variable_name : str
-        Name of the variable to use for segmentation (e.g., 'sst' or 'chlor_a').
-    anomaly_threshold : float
-        Threshold value for determining a relevant anomaly.
+    * ds_anom : xr.Dataset
+        * Input dataset containing the variable to be segmented (with dimensions like time, lat, lon).
+    * variable_name : str
+        * Name of the variable to use for segmentation (e.g., 'sst' or 'chlor_a').
+    * anomaly_threshold : float
+        * Threshold value for determining a relevant anomaly.
 
     Returns
     -------
-    xr.DataArray
-        A segmentation mask (DataArray) with the same dimensions as ds_anom[variable_name],
+    * xr.DataArray
+        * A segmentation mask (DataArray) with the same dimensions as ds_anom[variable_name],
         where relevant grid points are 1 and non-relevant ones are np.nan.
     """
     ds_anom_var = abs(ds_anom[variable_name])
@@ -49,20 +49,20 @@ def segment_n_variable_anomalies(ds_anom_list, var_name_list, anomaly_threshold_
 
     Parameters
     ----------
-    ds_anom_list : list of xr.Dataset or xr.DataArray
-        List of datasets (or DataArrays) containing the variables to process. Each is assumed to have dimensions (time, lat, lon).
-    var_name_list : list of str
-        List of variable names corresponding to each dataset in ds_anom_list.
-    anomaly_threshold_list : list of float
-        List of anomaly thresholds for each dataset.
-    union_type : str, optional
-        Logic for combining masks: 'and' to require all datasets to exceed thresholds, 'or' to allow any.
+    * ds_anom_list : list of xr.Dataset or xr.DataArray
+        * List of datasets (or DataArrays) containing the variables to process. Each is assumed to have dimensions (time, lat, lon).
+    * var_name_list : list of str
+        * List of variable names corresponding to each dataset in ds_anom_list.
+    * anomaly_threshold_list : list of float
+        * List of anomaly thresholds for each dataset.
+    * union_type : str, optional
+        * Logic for combining masks: 'and' to require all datasets to exceed thresholds, 'or' to allow any.
         Default is 'and'.
 
     Returns
     -------
-    xr.DataArray
-        A combined segmentation mask with values 1 where the union criteria are met, np.nan otherwise.
+    * xr.DataArray
+        * A combined segmentation mask with values 1 where the union criteria are met, np.nan otherwise.
     """
     # Process the first dataset directly using its numpy array.
     first_arr = np.abs(ds_anom_list[0][var_name_list[0]].values)
@@ -102,23 +102,23 @@ def label_connected_components(ds_segmented, eps_time=1, eps_lat=1, eps_lon=1, m
 
     Parameters
     ----------
-    ds_segmented : xr.DataArray
-        A segmentation mask (with values 1 for relevant anomalies and np.nan for others) with dimensions (time, lat, lon).
-    eps_time : int, optional
-        Maximum index difference in the time dimension for neighbor connectivity. Default is 1.
-    eps_lat : int, optional
-        Maximum index difference in the latitude dimension for neighbor connectivity. Default is 1.
-    eps_lon : int, optional
-        Maximum index difference in the longitude dimension for neighbor connectivity. Default is 1.
-    min_cluster_size : int, optional
-        Minimum number of points required for a cluster to be retained. Clusters smaller than this are labeled as noise (0). Default is 5.
+    * ds_segmented : xr.DataArray
+        * A segmentation mask (with values 1 for relevant anomalies and np.nan for others) with dimensions (time, lat, lon).
+    * eps_time : int, optional
+        * Maximum index difference in the time dimension for neighbor connectivity. Default is 1.
+    * eps_lat : int, optional
+        * Maximum index difference in the latitude dimension for neighbor connectivity. Default is 1.
+    * eps_lon : int, optional
+        * Maximum index difference in the longitude dimension for neighbor connectivity. Default is 1.
+    * min_cluster_size : int, optional
+        * Minimum number of points required for a cluster to be retained. Clusters smaller than this are labeled as noise (0). Default is 5.
 
     Returns
     -------
-    ds_labels : xr.DataArray
-        A DataArray of the same shape and coordinates as ds_segmented, with each cluster assigned a unique positive integer label and noise points labeled as 0.
-    n_clusters : int
-        The number of clusters that meet the min_cluster_size requirement.
+    * ds_labels : xr.DataArray
+        * A DataArray of the same shape and coordinates as ds_segmented, with each cluster assigned a unique positive integer label and noise points labeled as 0.
+    * n_clusters : int
+        * The number of clusters that meet the min_cluster_size requirement.
     """
     seg_arr = ds_segmented.values
     T, LAT, LON = seg_arr.shape
@@ -203,27 +203,27 @@ def label_connected_components_dbscan(
 
     Parameters
     ----------
-    ds_segmented : xr.DataArray
-        Segmentation mask with dimensions (time, lat, lon) where relevant points have value 1 and non-relevant or missing values are 0 or np.nan.
-    eps_time : int, optional
-        Maximum index difference in the time dimension for neighbor search. Default is 1.
-    eps_lat : int, optional
-        Maximum index difference in the latitude dimension for neighbor search. Default is 1.
-    eps_lon : int, optional
-        Maximum index difference in the longitude dimension for neighbor search. Default is 1.
-    min_neighbors : int, optional
-        Minimum number of points (including the point itself) required for a point to be a core point. Default is 5.
-    min_cluster_size : int, optional
-        Minimum number of points required for a cluster to be retained. Clusters smaller than this will be labeled as noise (-1). Default is 0.
+    * ds_segmented : xr.DataArray
+        * Segmentation mask with dimensions (time, lat, lon) where relevant points have value 1 and non-relevant or missing values are 0 or np.nan.
+    * eps_time : int, optional
+        * Maximum index difference in the time dimension for neighbor search. Default is 1.
+    * eps_lat : int, optional
+        * Maximum index difference in the latitude dimension for neighbor search. Default is 1.
+    * eps_lon : int, optional
+        * Maximum index difference in the longitude dimension for neighbor search. Default is 1.
+    * min_neighbors : int, optional
+        * Minimum number of points (including the point itself) required for a point to be a core point. Default is 5.
+    * min_cluster_size : int, optional
+        * Minimum number of points required for a cluster to be retained. Clusters smaller than this will be labeled as noise (-1). Default is 0.
 
     Returns
     -------
-    ds_labels : xr.DataArray
-        A DataArray with the same dimensions as ds_segmented, where each valid cluster is assigned a unique positive integer label and noise points are labeled as -1.
-    n_clusters : int
-        The number of clusters that meet the min_cluster_size requirement.
-    n_discarded : int
-        The number of clusters discarded due to being smaller than min_cluster_size.
+    * ds_labels : xr.DataArray
+        * A DataArray with the same dimensions as ds_segmented, where each valid cluster is assigned a unique positive integer label and noise points are labeled as -1.
+    * n_clusters : int
+        * The number of clusters that meet the min_cluster_size requirement.
+    * n_discarded : int
+        * The number of clusters discarded due to being smaller than min_cluster_size.
     """
     # Get the underlying NumPy array.
     seg_arr = ds_segmented.values
@@ -335,18 +335,18 @@ def calculate_features_from_extractors (clusters, cluster_extractor, experiment_
 
     Parameters
     ----------
-    clusters : xr.DataArray
-        A labeled clustering result with dimensions (time, lat, lon). Valid clusters have positive integer labels.
-    cluster_extractor : dict
-        A dictionary of lambda functions mapping feature names to functions that take a numpy array 
+    * clusters : xr.DataArray
+        * A labeled clustering result with dimensions (time, lat, lon). Valid clusters have positive integer labels.
+    * cluster_extractor : dict
+        * A dictionary of lambda functions mapping feature names to functions that take a numpy array 
         (extracted from a cluster) and return a feature value.
-    experiment_name : str, optional
-        An optional name for the experiment, used for logging purposes.
+    * experiment_name : str, optional
+        * An optional name for the experiment, used for logging purposes.
 
     Returns
     -------
-    dict
-        A dictionary mapping cluster IDs (as int) to dictionaries of computed features.
+    * dict
+        * A dictionary mapping cluster IDs (as int) to dictionaries of computed features.
     """
     time_start = time.time()
 
@@ -389,16 +389,16 @@ def extract_experiment_aggregated_features(exp_feature):
 
     Parameters
     ----------
-    exp_feature : dict
-        Dictionary with keys:
-          - 'experiment_name': Name of the experiment.
-          - 'file_name': File name associated with the experiment.
-          - 'features': Dictionary mapping cluster IDs to dictionaries of cluster features.
+    * exp_feature : dict
+        * Dictionary with keys:
+            * 'experiment_name': Name of the experiment.
+            * 'file_name': File name associated with the experiment.
+            * 'features': Dictionary mapping cluster IDs to dictionaries of cluster features.
 
     Returns
     -------
-    dict
-        A dictionary containing aggregated experiment-level features.
+    * dict
+        * A dictionary containing aggregated experiment-level features.
     """
     cluster_features = exp_feature['features']
     cluster_ids = list(cluster_features.keys())
@@ -440,19 +440,19 @@ def compute_clustering_metrics(clusters_xr):
 
     Parameters
     ----------
-    clusters_xr : xr.DataArray
-        Clustering output with dimensions (time, lat, lon). Valid points have positive integer labels,
+    * clusters_xr : xr.DataArray
+        * Clustering output with dimensions (time, lat, lon). Valid points have positive integer labels,
         noise points are labeled -1, and missing data are NaN.
 
     Returns
     -------
-    dict
-        A dictionary containing the following keys:
-          - 'silhouette': Silhouette score (higher is better). It measures the separation distance between the resulting clusters.
-          - 'davies_bouldin': Davies-Bouldin index (lower is better). It measures the average similarity between each cluster and its most similar one.
-          - 'calinski_harabasz': Calinski-Harabasz index (higher is better). It measures the ratio of the sum of between-cluster dispersion to within-cluster dispersion.
-          - 'noise_ratio': Proportion of unclustered points (lower is better). It measures the amount of noise in the clustering result.
-          If metrics are not computable (e.g., fewer than 2 clusters), their values will be np.nan.
+    * dict
+        * A dictionary containing the following keys:
+            *  'silhouette': Silhouette score (higher is better).
+            *  'davies_bouldin': Davies-Bouldin index (lower is better)
+            *  'calinski_harabasz': Calinski-Harabasz index (higher is better).
+            *  'noise_ratio': Proportion of unclustered points (lower is better).
+        * If metrics are not computable (e.g., fewer than 2 clusters), their values will be np.nan.
     """
     # Extract the underlying numpy array.
     arr = clusters_xr.values  # shape: (T, LAT, LON)

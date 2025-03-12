@@ -16,19 +16,19 @@ def wait_for_and_move_file(file_name: str, destination_path: str, timeout: int =
 
     Parameters
     ----------
-    file_name : str
-        The name of the file to wait for.
-    destination_path : str
-        The full path (including file name) where the file should be moved.
-    timeout : int, optional
-        Maximum time (in seconds) to wait for the file. Default is 60.
-    verbose : bool, optional
-        If True, prints status messages during the waiting process. Default is False.
+    * file_name : str
+        * The name of the file to wait for.
+    * destination_path : str
+        * The full path (including file name) where the file should be moved.
+    * timeout : int, optional
+        * Maximum time (in seconds) to wait for the file. Default is 60.
+    * verbose : bool, optional
+        * If True, prints status messages during the waiting process. Default is False.
 
     Raises
     ------
-    FileNotFoundError
-        If the file is not found in the Downloads folder within the specified timeout.
+    * FileNotFoundError
+        * If the file is not found in the Downloads folder within the specified timeout.
 
     Returns
     -------
@@ -62,17 +62,17 @@ def download_image_from_url(image_url: str, destination_path: str, verbose: bool
 
     Parameters
     ----------
-    image_url : str
-        The URL of the image to download.
-    destination_path : str
-        The file path where the downloaded image will be saved.
-    verbose : bool, optional
-        If True, prints a success message upon completion. Default is False.
+    * image_url : str
+        * The URL of the image to download.
+    * destination_path : str
+        * The file path where the downloaded image will be saved.
+    * verbose : bool, optional
+        * If True, prints a success message upon completion. Default is False.
 
     Raises
     ------
-    requests.exceptions.RequestException
-        If the HTTP request for downloading fails.
+    * requests.exceptions.RequestException
+        * If the HTTP request for downloading fails.
 
     Returns
     -------
@@ -102,14 +102,14 @@ def download_file_using_browser_and_move(in_url: str, destination_path: str, tim
 
     Parameters
     ----------
-    in_url : str
-        The URL of the file to download.
-    destination_path : str
-        The destination directory where the file should be moved.
-    timeout : int, optional
-        Maximum time (in seconds) to wait for the file to appear in the Downloads folder. Default is 60.
-    verbose : bool, optional
-        If True, prints status messages. Default is False.
+    * in_url : str
+        * The URL of the file to download.
+    * destination_path : str
+        * The destination directory where the file should be moved.
+    * timeout : int, optional
+        * Maximum time (in seconds) to wait for the file to appear in the Downloads folder. Default is 60.
+    * verbose : bool, optional
+        * If True, prints status messages. Default is False.
 
     Returns
     -------
@@ -136,16 +136,16 @@ def bulk_download_files(file_urls: str, destination_path: str, max_files: int = 
 
     Parameters
     ----------
-    file_urls : str
-        A string containing URLs (one per line) of the files to download.
-    destination_path : str
-        The directory where the downloaded files will be stored.
-    max_files : int, optional
-        The maximum number of files to download. If 0, all pending files are downloaded. Default is 0.
-    file_timeout : int, optional
-        Maximum time (in seconds) to wait for each file to appear in the Downloads folder. Default is 60.
-    verbose : bool, optional
-        If True, prints progress and status messages. Default is False.
+    * file_urls : str
+        * A string containing URLs (one per line) of the files to download.
+    * destination_path : str
+        * The directory where the downloaded files will be stored.
+    * max_files : int, optional
+        * The maximum number of files to download. If 0, all pending files are downloaded. Default is 0.
+    * file_timeout : int, optional
+        * Maximum time (in seconds) to wait for each file to appear in the Downloads folder. Default is 60.
+    * verbose : bool, optional
+        * If True, prints progress and status messages. Default is False.
 
     Returns
     -------

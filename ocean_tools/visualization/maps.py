@@ -15,30 +15,30 @@ def plot_spatial_variable(target, lat, lon, i_width=8, i_height=8,
 
     Parameters
     ----------
-    target : array-like
-        2D array (lat, lon) of the variable to plot.
-    lat : array-like
-        1D array of latitude values.
-    lon : array-like
-        1D array of longitude values.
-    i_width : int, optional
-        Figure width in inches (default is 8).
-    i_height : int, optional
-        Figure height in inches (default is 8).
-    clim : list, optional
-        Color limits as [min, max] (default is [0, 40]).
-    title : str, optional
-        Title of the plot (default is an empty string).
-    plot_label : str, optional
-        Label for the colorbar (default is 'Variable').
-    cmap : str, optional
-        Colormap to use (default is 'RdBu_r').
-    norm_mode : str, optional
-        Normalization mode for color scaling. Options are:
-          - 'none': no normalization,
-          - 'log': logarithmic normalization,
-          - 'symlog': symmetric logarithmic normalization.
-          (Default is 'none'.)
+    * target : array-like
+        * 2D array (lat, lon) of the variable to plot.
+    * lat : array-like
+        * 1D array of latitude values.
+    * lon : array-like
+        * 1D array of longitude values.
+    * i_width : int, optional
+        * Figure width in inches (default is 8).
+    * i_height : int, optional
+        * Figure height in inches (default is 8).
+    * clim : list, optional
+        * Color limits as [min, max] (default is [0, 40]).
+    * title : str, optional
+        * Title of the plot (default is an empty string).
+    * plot_label : str, optional
+        * Label for the colorbar (default is 'Variable').
+    * cmap : str, optional
+        * Colormap to use (default is 'RdBu_r').
+    * norm_mode : str, optional
+        * Normalization mode for color scaling. Options are:
+            * 'none': no normalization,
+            * 'log': logarithmic normalization,
+            * 'symlog': symmetric logarithmic normalization.
+        * (Default is 'none'.)
 
     Returns
     -------
@@ -79,34 +79,34 @@ def plot_n_spatial_variable(target_list, lat, lon, nrows, ncols, i_width=8, i_he
 
     Parameters
     ----------
-    target_list : list
-        List of 2D arrays (lat, lon) to plot.
-    lat : list or array-like
-        1D array of latitude values.
-    lon : list or array-like
-        1D array of longitude values.
-    nrows : int
-        Number of rows in the subplot grid.
-    ncols : int
-        Number of columns in the subplot grid.
-    i_width : int, optional
-        Width of each subplot in inches (default is 8).
-    i_height : int, optional
-        Height of each subplot in inches (default is 8).
-    clim : list, optional
-        Color limits as [min, max] (default is [0, 40]).
-    titles : list, optional
-        List of titles for each subplot (default is an empty list).
-    plot_label : str, optional
-        Label for the colorbar (default is 'Variable').
-    cmap : str, optional
-        Colormap to use. If 'labels', a discrete colormap is generated (default is 'RdBu_r').
-    norm_mode : str, optional
-        Normalization mode for color scaling. Options are:
-          - 'none': no normalization,
-          - 'log': logarithmic normalization,
-          - 'symlog': symmetric logarithmic normalization.
-          (Default is 'none'.)
+    * target_list : list
+        * List of 2D arrays (lat, lon) to plot.
+    * lat : list or array-like
+        * 1D array of latitude values.
+    * lon : list or array-like
+        * 1D array of longitude values.
+    * nrows : int
+        * Number of rows in the subplot grid.
+    * ncols : int
+        * Number of columns in the subplot grid.
+    * i_width : int, optional
+        * Width of each subplot in inches (default is 8).
+    * i_height : int, optional
+        * Height of each subplot in inches (default is 8).
+    * clim : list, optional
+        * Color limits as [min, max] (default is [0, 40]).
+    * titles : list, optional
+        * List of titles for each subplot (default is an empty list).
+    * plot_label : str, optional
+        * Label for the colorbar (default is 'Variable').
+    * cmap : str, optional
+        * Colormap to use. If 'labels', a discrete colormap is generated (default is 'RdBu_r').
+    * norm_mode : str, optional
+        * Normalization mode for color scaling. Options are:
+            * 'none': no normalization,
+            * 'log': logarithmic normalization,
+            * 'symlog': symmetric logarithmic normalization.
+        * (Default is 'none'.)
 
     Returns
     -------

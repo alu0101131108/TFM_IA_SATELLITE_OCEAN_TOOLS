@@ -12,34 +12,34 @@ def prepare_dataset_for_analysis(ds, variable_name, use_anomalies=False, anomaly
     Prepares a dataset for analysis by masking out non-ocean areas and, optionally,
     computing deseasonalized anomalies with additional transformations.
 
-    The function performs the following steps:
-      1. Generates an ocean mask by plotting the dataset extent using Cartopy,
-         drawing land features, and extracting a binary mask from the figure's RGBA buffer.
-      2. Applies the mask to the specified variable, setting values outside the ocean to NaN.
-      3. If use_anomalies is True, computes deseasonalized anomalies by subtracting the
-         monthly mean from each time step, and then applies a transformation based on anomaly_transform:
-            - 'positive': keeps only positive anomaly values.
-            - 'negative': keeps only negative anomaly values.
-            - 'square': squares the anomaly values.
-            - 'abs': takes the absolute value.
-            - 'none': no further transformation is applied.
+    * The function performs the following steps:
+        * Generates an ocean mask by plotting the dataset extent using Cartopy,
+            drawing land features, and extracting a binary mask from the figure's RGBA buffer.
+        * Applies the mask to the specified variable, setting values outside the ocean to NaN.
+        * If use_anomalies is True, computes deseasonalized anomalies by subtracting the
+            monthly mean from each time step, and then applies a transformation based on anomaly_transform:
+            * 'positive': keeps only positive anomaly values.
+            * 'negative': keeps only negative anomaly values.
+            * 'square': squares the anomaly values.
+            * 'abs': takes the absolute value.
+            * 'none': no further transformation is applied.
 
     Parameters
     ----------
-    ds : xr.Dataset
-        The input dataset containing the variable and coordinates (time, lat, lon).
-    variable_name : str
-        The name of the variable to process (e.g., 'sst' or 'chlor_a').
-    use_anomalies : bool, optional
-        If True, computes the deseasonalized anomaly for the variable. Default is False.
-    anomaly_transform : str, optional
-        Transformation to apply on the anomaly:
+    * ds : xr.Dataset
+        * The input dataset containing the variable and coordinates (time, lat, lon).
+    * variable_name : str
+        * The name of the variable to process (e.g., 'sst' or 'chlor_a').
+    * use_anomalies : bool, optional
+        * If True, computes the deseasonalized anomaly for the variable. Default is False.
+    * anomaly_transform : str, optional
+        * Transformation to apply on the anomaly:
           'positive', 'negative', 'square', 'abs', or 'none'. Default is 'none'.
 
     Returns
     -------
-    xr.Dataset
-        The processed dataset with non-ocean values masked out and, if requested,
+   * xr.Dataset
+        * The processed dataset with non-ocean values masked out and, if requested,
         the variable replaced with its deseasonalized (and transformed) anomaly.
     """
     # Generar máscara oceano/continente.
@@ -83,33 +83,33 @@ def time_aggregator(ds, variable_name, mode='full', agg_type='mean'):
     """
     Aggregates a variable in a dataset over time according to a specified mode.
 
-    Depending on the mode, the function returns:
-      - 'full': A single xarray.DataArray with the aggregation over the entire time dimension.
-      - 'seasonal': A dictionary with keys 'winter', 'spring', 'summer', and 'autumn', each containing an xarray.DataArray aggregated over the respective months.
-      - 'monthly': A dictionary with keys 1 to 12 (months) and corresponding xarray.DataArrays.
+    * Depending on the mode, the function returns:
+        * 'full': A single xarray.DataArray with the aggregation over the entire time dimension.
+        * 'seasonal': A dictionary with keys 'winter', 'spring', 'summer', and 'autumn', each containing an xarray.DataArray aggregated over the respective months.
+        * 'monthly': A dictionary with keys 1 to 12 (months) and corresponding xarray.DataArrays.
 
     Parameters
     ----------
-    ds : xr.Dataset
-        The input dataset containing the variable and a time coordinate.
-    variable_name : str
-        The name of the variable to aggregate.
-    mode : str, optional
-        Aggregation mode: 'full', 'seasonal', or 'monthly'. Default is 'full'.
-    agg_type : str, optional
-        Type of aggregation (e.g., 'mean', 'std') supported by xarray methods. Default is 'mean'.
+    * ds : xr.Dataset
+        * The input dataset containing the variable and a time coordinate.
+    * variable_name : str
+        * The name of the variable to aggregate.
+    * mode : str, optional
+        * Aggregation mode: 'full', 'seasonal', or 'monthly'. Default is 'full'.
+    * gg_type : str, optional
+        * Type of aggregation (e.g., 'mean', 'std') supported by xarray methods. Default is 'mean'.
 
     Returns
     -------
-    xr.DataArray or dict
-        If mode is 'full', returns an xarray.DataArray with the aggregated variable.
-        If mode is 'seasonal' or 'monthly', returns a dictionary mapping the period (season or month)
+    * xr.DataArray or dict
+        * If mode is 'full', returns an xarray.DataArray with the aggregated variable.
+        * If mode is 'seasonal' or 'monthly', returns a dictionary mapping the period (season or month)
         to the corresponding xarray.DataArray.
     
     Raises
     ------
-    ValueError
-        If the specified aggregation type is not supported or if the mode is unrecognized.
+    * ValueError
+        * If the specified aggregation type is not supported or if the mode is unrecognized.
     """
     if not hasattr(ds[variable_name], agg_type):
         raise ValueError(f"Tipo de agregación '{agg_type}' no soportado por xarray.")

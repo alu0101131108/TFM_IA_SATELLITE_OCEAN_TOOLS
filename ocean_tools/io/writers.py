@@ -15,14 +15,14 @@ def save_ndarray_as_netcdf_to_file(ref_ds, ndarray, var_name, file_path):
 
     Parameters
     ----------
-    ref_ds : xr.Dataset
-        A reference dataset containing the coordinate variables 'time', 'lat', and 'lon'.
-    ndarray : np.ndarray
-        The NumPy array to be saved. Must have shape (time, lat, lon) or (lat, lon).
-    var_name : str
-        The name to assign to the variable in the NetCDF file.
-    file_path : str
-        The desired output file path for the NetCDF file.
+    * ref_ds : xr.Dataset
+        * A reference dataset containing the coordinate variables 'time', 'lat', and 'lon'.
+    * ndarray : np.ndarray
+        * The NumPy array to be saved. Must have shape (time, lat, lon) or (lat, lon).
+    * var_name : str
+        * The name to assign to the variable in the NetCDF file.
+    * file_path : str
+        * The desired output file path for the NetCDF file.
 
     Returns
     -------
@@ -55,12 +55,12 @@ def store_pickle_variable(variable, store_dir, file_name):
 
     Parameters
     ----------
-    variable : Any
-        The Python variable (pickle-able object) to be stored.
-    store_dir : str
-        The directory where the pickle file will be saved.
-    file_name : str
-        The desired base name for the pickle file (without the .pkl extension).
+    * variable : Any
+        * The Python variable (pickle-able object) to be stored.
+    * store_dir : str
+        * The directory where the pickle file will be saved.
+    * file_name : str
+        * The desired base name for the pickle file (without the .pkl extension).
 
     Returns
     -------

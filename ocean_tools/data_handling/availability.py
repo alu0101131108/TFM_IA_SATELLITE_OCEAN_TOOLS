@@ -15,14 +15,14 @@ def data_availability_analysis(urls_directory: str, monthly: bool = False, plot:
 
     Parameters
     ----------
-    urls_filepath : str
-        Path to the text file containing URLs (one URL per line). The file names are expected
+    * urls_filepath : str
+        * Path to the text file containing URLs (one URL per line). The file names are expected
         to contain a date in the format YYYYMMDD after a dot.
-    monthly : bool, optional
-        If True, assumes each month should have one file (instead of the total number of days in the month).
+    * monthly : bool, optional
+        * If True, assumes each month should have one file (instead of the total number of days in the month).
         Default is False.
-    plot : bool, optional
-        If True, displays a bar chart of file availability. Default is True.
+    * plot : bool, optional
+        * If True, displays a bar chart of file availability. Default is True.
 
     Returns
     -------

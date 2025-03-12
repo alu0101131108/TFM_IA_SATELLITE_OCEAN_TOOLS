@@ -17,15 +17,15 @@ def prep_for_PCA(ds, variable_name):
 
     Parameters
     ----------
-    ds : xarray.Dataset
-        Dataset containing the variable.
-    variable_name : str
-        Name of the variable to process.
+    * ds : xarray.Dataset
+        * Dataset containing the variable.
+    * variable_name : str
+        * Name of the variable to process.
 
     Returns
     -------
-    np.ndarray
-        2D numpy array with shape (time, lat*lon) containing the normalized data.
+    * np.ndarray
+        * 2D numpy array with shape (time, lat*lon) containing the normalized data.
     """
     anom_prep = np.ma.masked_invalid(ds.variables[variable_name]).filled(0.)
     anom_prep = (anom_prep - anom_prep.mean()) / anom_prep.std()
@@ -45,23 +45,23 @@ def EOF_anomalies_analysis(anom_prep, n_components, store=False, store_dir="", f
 
     Parameters
     ----------
-    anom_prep : np.ndarray
-        2D array of anomalies with shape (time, lat*lon), normalized (zero mean, unit std).
-    n_components : int
-        Number of principal components to compute.
-    store : bool, optional
-        If True, the results (explained variance and EOFs) are saved to disk. Default is False.
-    store_dir : str, optional
-        Directory where the results will be stored if store is True.
-    file_name : str, optional
-        Base name for the stored files if store is True.
+    * anom_prep : np.ndarray
+        * 2D array of anomalies with shape (time, lat*lon), normalized (zero mean, unit std).
+    * n_components : int
+        * Number of principal components to compute.
+    * store : bool, optional
+        * If True, the results (explained variance and EOFs) are saved to disk. Default is False.
+    * store_dir : str, optional
+        * Directory where the results will be stored if store is True.
+    * file_name : str, optional
+        * Base name for the stored files if store is True.
 
     Returns
     -------
-    tuple
-        A tuple (LAM, E) where:
-          - LAM is a numpy.ndarray containing the explained variance of each component.
-          - E is a numpy.ndarray of EOFs with shape (lat*lon, n_components).
+    * tuple
+        * A tuple (LAM, E) where:
+            * LAM is a numpy.ndarray containing the explained variance of each component.
+            * E is a numpy.ndarray of EOFs with shape (lat*lon, n_components).
     """
     ipca = IncrementalPCA(n_components=n_components, batch_size=100)
     ipca.fit_transform(anom_prep)
@@ -102,14 +102,14 @@ def plot_eigenvalues_explained_variance(LAM, E, n_components, title='Fraction of
 
     Parameters
     ----------
-    LAM : np.ndarray
-        Array of explained variances from the PCA.
-    E : np.ndarray
-        Array of principal components (EOFs) with shape (lat*lon, n_components).
-    n_components : int
-        Number of components to plot.
-    title : str, optional
-        Title for the plot. Default is 'Fraction of Variance Explained'.
+    * LAM : np.ndarray
+        * Array of explained variances from the PCA.
+    * E : np.ndarray
+        * Array of principal components (EOFs) with shape (lat*lon, n_components).
+    * n_components : int
+        * Number of components to plot.
+    * title : str, optional
+        * Title for the plot. Default is 'Fraction of Variance Explained'.
 
     Returns
     -------
@@ -143,23 +143,23 @@ def get_patterns_and_ts(E, n_patterns, nlat, nlon, anom_prep_var):
 
     Parameters
     ----------
-    E : np.ndarray
-        EOFs (principal components) from PCA with shape (lat*lon, n_components).
-    n_patterns : int
-        Number of patterns (EOFs) to extract.
-    nlat : int
-        Number of latitude points.
-    nlon : int
-        Number of longitude points.
-    anom_prep_var : np.ndarray
-        The 2D anomaly array (time, lat*lon) used for PCA.
+    * E : np.ndarray
+        * EOFs (principal components) from PCA with shape (lat*lon, n_components).
+    * n_patterns : int
+        * Number of patterns (EOFs) to extract.
+    * nlat : int
+        * Number of latitude points.
+    * nlon : int
+        * Number of longitude points.
+    * anom_prep_var : np.ndarray
+        * The 2D anomaly array (time, lat*lon) used for PCA.
 
     Returns
     -------
-    tuple
-        A tuple (patterns, time_series) where:
-          - patterns is a list of 2D arrays (each of shape (nlat, nlon)) representing spatial patterns.
-          - time_series is a list of 1D arrays representing the corresponding temporal series (PCs).
+    * tuple
+        * A tuple (patterns, time_series) where:
+            * patterns is a list of 2D arrays (each of shape (nlat, nlon)) representing spatial patterns.
+            * time_series is a list of 1D arrays representing the corresponding temporal series (PCs).
     """
     patterns = []
     time_series = []
@@ -185,20 +185,20 @@ def get_pattern_ts_max_min(ds_anom, time_series, variable_name, verbose=False):
 
     Parameters
     ----------
-    ds_anom : xr.Dataset
-        Dataset containing the variable and the time coordinate.
-    time_series : list
-        List of 1D numpy arrays representing temporal series (PCs) for each EOF.
-    variable_name : str
-        Name of the variable in ds_anom.
-    verbose : bool, optional
-        If True, prints the dates corresponding to the maximum and minimum values for each EOF.
+    * ds_anom : xr.Dataset
+        * Dataset containing the variable and the time coordinate.
+    * time_series : list
+        * List of 1D numpy arrays representing temporal series (PCs) for each EOF.
+    * variable_name : str
+        * Name of the variable in ds_anom.
+    * verbose : bool, optional
+        * If True, prints the dates corresponding to the maximum and minimum values for each EOF.
         Default is False.
 
     Returns
     -------
-    list
-        A list of lists, where each inner list contains two elements: [max_pattern, min_pattern],
+    * list
+        * A list of lists, where each inner list contains two elements: [max_pattern, min_pattern],
         corresponding to the patterns (fields) on the dates of maximum and minimum values.
     """
     maxmins = []
